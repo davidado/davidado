@@ -1,0 +1,928 @@
+<!doctype html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  
+    class="html theme--light"
+  
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <title>
+    David Ado
+        |
+        Scalable Systems Notes
+      
+
+    
+
+  </title>
+
+  <meta name="generator" content="Hugo 0.125.3"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="David Ado" />
+  <meta
+    name="description"
+    content="Full Stack Developer
+Cloud Architect
+"
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.009f917038f30ebd1f2147e8e1dfd40fc1b799422a7869aa0da12af1fd1bf8ba.css"
+      integrity="sha256-AJ&#43;RcDjzDr0fIUfo4d/UD8G3mUIqeGmqDaEq8f0b&#43;Lo="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css"
+    integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css"
+    integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css"
+    integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css"
+    integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css"
+    integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="canonical" href="http://localhost:1313/posts/scalable-systems-notes/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.d6d329d93844b162e8bed1e915619625ca91687952177552b9b3e211014a2957.js"
+      integrity="sha256-1tMp2ThEsWLovtHpFWGWJcqRaHlSF3VSubPiEQFKKVc="
+      crossorigin="anonymous"
+    ></script>
+  
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Scalable Systems Notes">
+<meta name="twitter:description" content="The Basics Scalability is the property of a system to handle a growing amount of work by adding resources. Replication and Optimization Replication adds more resources (web servers, app servers, database replicas, etc).">
+
+
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/scalable-systems-notes/">
+  <meta property="og:site_name" content="David Ado">
+  <meta property="og:title" content="Scalable Systems Notes">
+  <meta property="og:description" content="The Basics Scalability is the property of a system to handle a growing amount of work by adding resources. Replication and Optimization Replication adds more resources (web servers, app servers, database replicas, etc).">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-01-20T12:37:25-08:00">
+    <meta property="article:modified_time" content="2024-01-20T12:37:25-08:00">
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "posts",
+        "name": "Scalable Systems Notes",
+        "headline": "Scalable Systems Notes",
+        "alternativeHeadline": "",
+        "description": "
+      
+        The Basics Scalability is the property of a system to handle a growing amount of work by adding resources. Replication and Optimization Replication adds more resources (web servers, app servers, database replicas, etc).
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/scalable-systems-notes\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "copyrightYear" : "2024",
+        "dateCreated": "2024-01-20T12:37:25.00Z",
+        "datePublished": "2024-01-20T12:37:25.00Z",
+        "dateModified": "2024-01-20T12:37:25.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "David Ado",
+            "url": "http://localhost:1313/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http:\/\/localhost:1313\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+      ]
+
+    ,
+        "url" : "http:\/\/localhost:1313\/posts\/scalable-systems-notes\/",
+        "wordCount" : "5660",
+        "genre" : [ ],
+        "keywords" : [ ]
+    }
+  </script>
+
+
+</head>
+<body class="body">
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+        
+      ><div
+  class="sidebar
+    animated fadeInDown
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/profile.jpg"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/">David Ado</a>
+        </div>
+      
+      <div class="sidebar__introduction-description">
+        <p>Full Stack Developer<br />Cloud Architect<br /></p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.linkedin.com/in/davidado/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Linkedin"
+            title="Linkedin"
+          >
+            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/jadoint"
+            target="_blank"
+            rel="noopener me"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        David Ado
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZKQND180X"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FZKQND180X');
+        }
+      </script>
+    
+  
+
+</div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/posts/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/about/about-me"
+              
+              title=""
+              >About</a
+            >
+          </li>
+        
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Scalable Systems Notes</h1>
+      <h2 id="the-basics">The Basics</h2>
+<ul>
+<li>Scalability is the property of a system to handle a growing amount of work by adding resources.</li>
+<li>Replication and Optimization
+<ul>
+<li>Replication adds more resources (web servers, app servers, database replicas, etc).</li>
+<li>Optimization makes the most of the resources we have (more efficient algorithms, faster programming languages, adding database indexes, etc).</li>
+</ul>
+</li>
+<li>The goal is to have systems that scale exponentially while costs grow linearly (hyperscale systems).</li>
+</ul>
+<h2 id="distributed-architectures">Distributed Architectures</h2>
+<p><strong>Starter System</strong></p>
+<ul>
+<li>Consists of a client tier, an application service tier, and a database tier.</li>
+</ul>
+<p><strong>Scaling Up</strong></p>
+<ul>
+<li>Means upgrading a server with more CPUs and memory. It&rsquo;s simple and can go a long way.</li>
+</ul>
+<p><strong>Scaling Out</strong></p>
+<ul>
+<li>Relies on the ability to run multiple copies of a service on multiple servers. You will need:
+<ul>
+<li>Load balancers are reverse proxies that process user requests with the aim of keeping all resources equally busy.</li>
+<li>Stateless services: user sessions need to be stored outside of the replicated application servers so that if a server fails, the load balancer can simply redirect the request to a different server.</li>
+<li>A scaled out system involves the client tier, a load balancer, multiple application servers, a separate session store, and the database tier.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Distributed Cache</strong></p>
+<ul>
+<li>The cache can store commonly accessed database results in memory to reduce hits to the database so you effectively buy extra database capacity.</li>
+<li>A scaled out system can replace the session store with a caching system since sessions can be stored in the cache.</li>
+<li>Caveats are stale data and managing cache invalidation so it&rsquo;s best to cache data that rarely changes.</li>
+</ul>
+<p><strong>Distributed Databases</strong></p>
+<ul>
+<li><strong>Distributed SQL stores</strong> store data across multiple servers but logically appear to the application as a single database.</li>
+<li><strong>Distributed NoSQL stores</strong> are usually built from the ground up with distributing data across multiple nodes in mind. Leading products are Cassandra, MongoDB, and Neo4J.</li>
+<li>At this point, the architecture now includes the client tier, a load balancer, distributed application servers, distributed cache, and distributed databases. This makes for a relatively highly available system since another server can always pick up the slack if a particular server fails.</li>
+</ul>
+<p><strong>Services</strong></p>
+<ul>
+<li>You can also break up the application into multiple independent services (or microservices) so you can scale resources on each service based on demand.</li>
+<li>One example is having one service for web users and another for mobile where you can increase or decrease resources for each as needed.</li>
+</ul>
+<p><strong>Increasing Responsiveness</strong></p>
+<ul>
+<li>Not all data needs to persist immediately before returning to the user.</li>
+<li>You can send data to a distributed queueing platform where a <em>producer</em> writes to queue while a <em>consumer</em> removes the message from the queue which can then process the request before persisting it in the database.</li>
+<li>Use cases for this would be for processing comment sentiment analysis or text spam classification since the user does not need to wait around on the initial request for these background processes finish.</li>
+</ul>
+<h2 id="scalable-systems">Scalable Systems</h2>
+<h2 id="application-services">Application Services</h2>
+<p><strong>Horizontal Scaling</strong></p>
+<ul>
+<li>The simplest approach to easily add new processing capacity is by deploying multiple instances of stateless servers with a load balancer distributing requests across these instances.</li>
+<li>Horizontal scaling reduces single points of failure and increases availability.</li>
+</ul>
+<p><strong>Load Balancing</strong></p>
+<ul>
+<li>Load balancers can act on layer 4 (network) or layer 7 (application).</li>
+<li>Network-level load balancers are the simplest and fastest since they operate on individual TCP or UDP packets and provide few features.</li>
+<li>Application-level load balancers reassemble the complete HTTP request and base their routing decisions on HTTP header values or the actual contents of a message.
+<ul>
+<li>For example, a load balancer can be configured to send all POST requests to a subset of services.</li>
+<li>Are slower than network-level load balancers but provides richer capabilities.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Load Distribution Policies</strong></p>
+<ul>
+<li>Round robin.</li>
+<li>Least connections.</li>
+<li>HTTP header field: X-Client-Location:US,Seattle can be routed to specific servers, for example.</li>
+<li>HTTP operation: based on the HTTP verb (GET, POST, etc).</li>
+<li>Services can be allocated weights so that if a server has twice the capability, it can be allocated a weight of 2 whereas the less capable server can have a weight of 1.</li>
+</ul>
+<p><strong>Health Monitoring</strong></p>
+<ul>
+<li>A load balancer will periodically send pings and attempt connections to test the health of each service.</li>
+<li>If a service is unresponsive, it will be removed from the pool until it becomes available again.</li>
+</ul>
+<p><strong>Elasticity</strong></p>
+<ul>
+<li>Elasticity is the capability of an application to automatically provision capacity in response to an increase in requests.</li>
+<li>Scaling policies can be configured based on the available metrics (CPU utilization, etc) of the monitoring system (example: AWS Auto Scaling groups) or capacity can be scheduled.</li>
+</ul>
+<p><strong>Session Affinity</strong></p>
+<ul>
+<li>Otherwise called sticky sessions for stateful services where a load balancer sends all requests from the same client to the same service instance.</li>
+<li>Can be problematic for highly scalable systems since if a service goes down, it will be difficult to recreate the user&rsquo;s state.</li>
+</ul>
+<h2 id="distributed-caching">Distributed Caching</h2>
+<p><strong>Application Caching</strong></p>
+<ul>
+<li>Requires business logic to stores and access precomputed results into a distributed cache.</li>
+<li>Best for data that changes infrequently or is expensive to generate to relieve databases of heavy read traffic.</li>
+<li>Two dominant technologies in this area are memcached and Redis.</li>
+<li>Use cases include user sessions and database query results.</li>
+<li>A request to the cache that yields results is called a <em>cache hit</em> and is otherwise a <em>cache miss</em>.</li>
+<li>Cache access requires a key to associate with the results and a <em>time to live</em> (TTL) value is created with the object that tells the cache when to evict a key-value pair in seconds.</li>
+<li>Application-level caching is also known as the <em>cache-aside pattern</em> since the code can bypass the data storage systems entirely if the results are in the cache.</li>
+<li>Other caching patterns:
+<ul>
+<li>Read-through: The application only access the cache for data. If the data is not available, a loader accesses the data systems and loads the results in the cache for the application to access.</li>
+<li>Write-through: The application always writes updates to the cache while a writer is invoked to write the new cache values to the database. When the database is updated, the application can complete the request.</li>
+<li>Write-behind: Like write-through but the application does not wait for the value to be written to the database. Also known as a write-back cache and is internally used by most database engines.</li>
+</ul>
+</li>
+<li>The cache-aside strategy is the primary approach for scalable systems since if the cache is unavailable, all requests are simply handled as a cache miss yet the services can still satisfy requests.</li>
+</ul>
+<p><strong>Web Caching</strong></p>
+<ul>
+<li>Exploits mechanisms built into the HTTP protocol to enable caching within the infrastructure provided by the internet.</li>
+<li>Multiple levels of caches exist from the client&rsquo;s web browser cache to the local organization-based caches.</li>
+<li>Edge caches are also known as content delivery networks (CDNs) and are often geographically distributed to cache frequently accessed data closer to the application&rsquo;s users.
+<ul>
+<li>Typically stores the results of GET requests only and the cache key is the URI of the associated GET.</li>
+</ul>
+</li>
+<li>Proxy caches such as Squid and Varnish are extensively deployed on the internet and is most effective for static data (images, videos, and audio) or infrequently changed data.</li>
+</ul>
+<p><strong>Cache-Control</strong></p>
+<ul>
+<li>The Cache-Control HTTP header specifies how a resource should be cached.</li>
+<li><em>no-store</em>: Specifies that a resource should not be cached.</li>
+<li><em>no-cache</em>: Specifies that a cached resource must be revalidated with an origin server. Uses &ldquo;Etag&rdquo;.</li>
+<li><em>private</em>: Specifies that a resource can only be cached by user-specific devices such as a web browser.</li>
+<li><em>public</em>: Specifies a resouce that can be cached by any proxy server.</li>
+<li><em>max-age</em>: Defines the length of time in seconds a cached copy of a resource should be retained.</li>
+</ul>
+<p><strong>Expires and Last-Modified</strong></p>
+<ul>
+<li>If <em>max-age</em> is not specified, the <em>Expires</em> header is checked next which has an explicit date and time as the expiration.</li>
+<li>The <em>Last-Modified</em> header is checked last and is used to determine the freshness lifetime of a resource based on a heuristic calculation that the cache supports.
+<ul>
+<li>A resource retention period can be calculated as the value of the <em>Date</em> header minus the value of the <em>Last-Modified</em> header divided by 10.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Etag</strong></p>
+<ul>
+<li>An <em>Etag</em> can be set for a resource for a web cache to check for if the resource is still valid based on what an origin server states during revalidation.
+<ul>
+<li>If an <em>Etag</em> matches with the origin server value, a <em>304 (Not Modified)</em> response is returned with no response body needed.</li>
+<li>The server can also return a <em>200 OK</em> response with a response with a response body and an <em>Etag</em> representing the latest version.</li>
+</ul>
+</li>
+</ul>
+<h2 id="asynchronous-messaging">Asynchronous Messaging</h2>
+<ul>
+<li>A request to a service can be fired by a <em>producer</em> into a message queue for a <em>consumer</em> to act on at a later time so that a user does not have to wait around for all of the processes associated with a request to finish.</li>
+<li>A messaging system comprises the the following:
+<ul>
+<li>Message queues: store the sequence of messages.</li>
+<li>Producers: sends messages to a named queue and waits for an acknowledgement from the broker before considering the send complete.</li>
+<li>Consumers: retrieves messages from the queues.
+<ul>
+<li>Each message is retrieved by exactly one consumer.</li>
+<li>Pull mode, also known as polling, continually polls the queue for messages.</li>
+<li>In push mode, the consumer provides the broker with a callback function that should be invoked when a message is available.</li>
+<li>Push mode is more efficient to prevent the broker from being flooded with requests from multiple consumers.</li>
+</ul>
+</li>
+<li>Message broker: manages one or more queues and adds messages to the queue in the order they arrive.
+<ul>
+<li>Sends an acknowledgement to producers.</li>
+<li>Accepts acknowledgements from consumers to mark a message as delivered and remove it from the queue.</li>
+<li>Automatic acknowledgements have the lowest latency since a message is marked as delivered as soon as a consumer takes it.</li>
+<li>Manual acknowledgements are slower since a consumer must fully process the message before the broker can mark the message as delivered.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Message Persistence</strong></p>
+<ul>
+<li>Message queues are typically stored in memory for lower latencies.</li>
+<li>Messages can be persisted to disk for data safety in the event of a crash or reboot which can be used to repopulate the queues in memory but will increase response time for send operations.</li>
+</ul>
+<p><strong>Publish-Subscribe</strong></p>
+<ul>
+<li>In publish-subscribe systems, message queues are known as <em>topics</em> and can have one or more subscribers.</li>
+<li>New subscribers can easily be added without other changes to the system.</li>
+<li>Consumers can execute tasks in parallel for each message.</li>
+<li>The broker has more work to do in this system since it needs to keep messages available until all subscribers have consumed it.</li>
+</ul>
+<h2 id="serverless-processing-systems">Serverless Processing Systems</h2>
+<ul>
+<li>As an alternative to explicitly provisioning virtual processing resources on infrastructure as a service (IaaS) platforms, <em>serverless</em> platforms do not require any compute resources to be statically provisioned.
+<ul>
+<li>Examples are AWS Lambda and Google App Engine (GAE).</li>
+</ul>
+</li>
+<li>Like with Autoscaling Groups, serverless platforms also manage autoscaling to provide additionaly capacity and consistent low response times.</li>
+<li>When request loads drop, capacity is decommissioned and no charges are incurred if there are no active requests.</li>
+<li>Commonly used for implementing microservice architectures.</li>
+</ul>
+<p><strong>Google App Engine</strong></p>
+<ul>
+<li>Application execution is managed by Google App Engine (GAE) and launches compute resources to match demand levels.</li>
+<li>Typical applications also access a managed persistent storage platform such as Firestore or Google Cloud SQL or interact with a messaging service like Google&rsquo;s Cloud Pub/Sub.</li>
+<li>GAE comes in two flavors:
+<ul>
+<li>Standard environment: more closely managed by GAE with development restrictions on language versions supported but can scale services rapidly.</li>
+<li>Flexible environment: runs applications on Docker containers and gives more options for development capabilities but does not scale as rapidly as the standard environment.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Standard Environment</strong></p>
+<ul>
+<li>Developers upload application code to a GAE project associated with a base project URL.</li>
+<li>Projects can be configured to have a minimum and a maximum number of instances with a minimum of zero being used for applications that have long periods of inactivity saving on costs.</li>
+<li>Since GAE is responsible for loading the runtime environment for an application, it restricts the supported versions to a small number per programming language resulting in a much faster loading of new instances especially relative to booting a virtual machine.</li>
+<li>The language used affects the time to load a new instance on GAE where Go may start a new instance in under a second while a JVM might load in 1-3 seconds.</li>
+</ul>
+<p><strong>Autoscaling</strong></p>
+<ul>
+<li>Specified in an <em>app.yaml</em> passed to GAE when your code is uploaded.</li>
+<li>The default parameters can be overridden.
+<ul>
+<li><em>Target CPU utilization</em>: CPU threshold for when more or fewer instances will be started. The range is 0.5 (50%) to 0.95 (95%). Default is 0.6 (60%).</li>
+<li><em>Maximum concurrent requests</em>: Default is 10 and the maximum is 80.</li>
+<li><em>Target throughput utilization</em>: When the number of concurrent requests for an instance reaches a value eaual to maximum concurrent requests value multiplied by the target throughput utilization, the scheduler tries to start a new instance. The range is 0.5 (50%) to 0.95 (95%). Default is 0.6 (60%).</li>
+</ul>
+</li>
+<li>By default, an instance will handle 10 x 0.6 = 6 concurrent requests before a new instance is created. If these 6 or fewer requests cause the CPU utilization to go over 60%, the scheduler will also try to create a new instance.</li>
+<li>You can also set the <em>max-pending-latency</em> parameter to specify how long a request can wait in the pending queue before starting additional instances. The default is 30 ms.</li>
+<li>The number of concurrent requests an instance can handle depends on the processing time for the instance. If each request takes 100 ms to process, then each instance processes 10 requests per second. If there are 1000 instances, the maximum throughput is 1000 x 10 = 10,000 requests per second.</li>
+<li>To determine the parameters that result in the highest throughputs, load test a range of parameters. For example: <em>target_cpu_utilization</em>: {0.6, 0.7, 0.8} each at <em>max_concurrent_requests</em>: {10, 35, 60, 80}.</li>
+<li>Factor in the costs associated with each parameter combination to determine your ideal cost to performance ratio.</li>
+</ul>
+<p><strong>AWS Lambda</strong></p>
+<ul>
+<li>Has many of the same capabilities as GAE with Lambda functions being tightly integrated to the AWS ecosystem such as AWS S3 and AWS CloudWatch.</li>
+<li>The inital invocation is known as a <em>cold start</em>.</li>
+<li>Unlike GAE, Lambda does not send multiple concurrent requests to the same runtime instance.</li>
+<li>If an instance is not immediately reutilized, Lambda <em>freezes</em> the execution environment and <em>thaws</em> it when subsequent requests arrive.</li>
+<li>If more requests don&rsquo;t arrive after a number of minutes, Lambda will deactivate the frozen instance.</li>
+<li>Cold start overhead can be mitigated by using <em>provisioned concurrency</em> but increased charges apply.</li>
+<li>Unlike GAE, vCPUs can&rsquo;t be specified and instead allocated in proportion to the memory specified.</li>
+<li>Concurrency limits actually apply to all functions in the region associated with a single AWS account so it&rsquo;s possible that one function can consume the burst limit and negatively affect the availability of other functions.
+<ul>
+<li><em>Reserved concurrency</em> can mitigate this issue where each individual function can be set with a value that is less than the burst limit.</li>
+<li>Requests that cannot be processed with fail with an HTTP 429 error (too many requests).</li>
+</ul>
+</li>
+</ul>
+<h2 id="microservices">Microservices</h2>
+<ul>
+<li>Microservices solve issues that monoliths may eventually have as they grow.
+<ul>
+<li><em>Code base complexity</em>: As the size of the application and engineering team grows, adding new features, testing, and refactoring becomes progressively more difficult. Technical debt can build up resulting in ever more fragile code and new features are rolled out at an ever-slowing pace.</li>
+<li><em>Scaling out</em>: Monoliths can be scaled out by replicating the application to multiple nodes but the entire application must be copied every time. If only a small part of the application is actually seeing a spike in traffic, system resources may be wasted hosting the entire application when only a small part of it actually needs to be scaled.</li>
+</ul>
+</li>
+<li>A monolith can be decomposed into multiple independent services that communicate and coordinate with each other when necessary.</li>
+<li>Microservices offer the following advantages:
+<ul>
+<li><em>Code base</em>: An individual service should not be more complex than what a small team size can build, evolve, and manage. Since a microservice is fully self-contained and is effectively a black box to the rest of the system, the team has full autonomy to choose their own development stack and data management platform. Given the narrower scope of a well-designed microservice, code complexity should be low resulting in a higher development cadence for new features.</li>
+<li><em>Scale out</em>: Microservices can be scaled out independently based on individual needs.</li>
+</ul>
+</li>
+<li>Domain-driven design (DDD) is often a suitable method for identifying microservice boundaries within a monolith with the goal of creating services that are self-contained in nature.
+<ul>
+<li>Generally, code that changes together, stays together.</li>
+</ul>
+</li>
+<li>A <em>self-contained</em> microservice not only refers to the code, but also means that it has its own database separate from the monolith&rsquo;s whether it be a logical or a physical separation.</li>
+<li>However, microservices are distributed by nature so excessive latencies may result in microservices frequently interacting with each other over the network.
+<ul>
+<li>Two domains may initially make sense separated but if both microservices frequently interact with each other incurring excessive communications, it may make sense to merge the two.</li>
+<li>Another approach is to duplicate data across coupled microservices so data can be accessed locally to reduce response times. Duplicating data has its own trade-offs namely with additional storage capacity and the need for duplicated data across microservices to converge to a consistent state.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Deploying Microservices</strong></p>
+<ul>
+<li><em>Serverless platforms</em> is one approach where a microservice can be built to expose its API on the platform. Advantages:
+<ul>
+<li><em>Deployment is simple</em>: just upload your executable package to the endpoint configured for your function.</li>
+<li><em>Pay by usage</em>: costs are low or zero for periods of low or no usage.</li>
+<li><em>Ease of scaling</em>: the platform scales your microservice based on your configuration parameters.</li>
+</ul>
+</li>
+<li>When deploying on a serverless platform, you expose multiple endpoints that clients need to invoke which introduces complexity if a client needs to know the exact IP and port for each microservice.
+<ul>
+<li>An API gateway pattern is used to counteract this issue where the gateway essentially acts as a single entry point for all requests (refer to <em>facade</em> pattern in <em>Gang of Four</em> book for an analagous situation). This insulates clients from needing to know about the underlying architecture so that if the developer refactors the API, clients are oblivious to the change.</li>
+<li>API gateways can be provided by Nginx or Kong and proxies incoming client API requests to backend microservices via pre-configured mappings between client-facing APIs and microservice IPs and ports.</li>
+<li>API gateways can also handle authenication and authorization, request throttling, caching API results, and the integration of monitoring tools.</li>
+<li>The API gateway can be a bottleneck. The AWS API Gateway has a 10K requests per second limit with the ability to burst up to an additional 5K requests/second. The Kong API gateway however, is stateless so it is possible to deploy multiple instances and distribute requests using a load balancer.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Principles of Microservices</strong></p>
+<ul>
+<li><em>Modeled around a business domain</em>: A collection of related services can come under a <em>domain</em>. Business domain boundaries may need rethinking in the context of coupling between microservices and the performance overheads it may introduce.</li>
+<li><em>Hide implementation details</em>: The API contract should be guaranteed but the internals should be a black box which allows for the flexibility for the service team to choose their own development stack.</li>
+<li><em>Deploy independently</em>: Each microservice should be deployable independently of other microservices so that a service team does not have to depend on any other team.</li>
+<li><em>Isolate failure</em>: A microservice failure should not propagate to the others. The system should continue to operate, even at a reduced functionality, if a microservice fails.</li>
+<li><em>Highly Observable</em>: Each service must be monitored to ensure low latencies, that error conditions are logged, and that they are behaving as expected.</li>
+<li><em>Decentralize all the things</em>: Decentralize the processing of client requests that require multiple calls to downstream microservices (often called workflows). Two basic approaches are orchestration and choreography.</li>
+<li><em>Culture of automation</em>: Development and DevOps tooling are essential to gain the benefits of microservices making the processes faster and more robust to make changes to the system.</li>
+</ul>
+<p><strong>Resilience in Microservices</strong></p>
+<ul>
+<li><strong>Cascading Failures</strong>: Microservices frequently need to communicate to satisfy a single request making them susceptible to cascading failures. These occur when downstream service response times become slow which cause back pressure in calling services and eventually, a failure in one can cause all dependent services to crash. This can often be excaerbated by clients that immediately retry the operation. The core problem is that slow services utilize system resources for requests for extended periods.
+<ul>
+<li>You can insert a growing delay between retries, a technique called exponential backoff.</li>
+<li><em>Fail fast pattern</em>: You may have 50% of requests fall under 200 ms, 95% fall under 1200 ms, and 99% faull under 3000 ms. If the API handless 200 million requests per day, this means that 1%, or 2 million requests, take greater than 3 seconds.
+<ul>
+<li>A system can fail requests that take longer than a predefined time limit (ex. &gt; 3 seconds) to immediately release resources associated with that request.</li>
+<li>You can also enable throttling or rate limiting on server if the request load exceeds some threshold and fail the request with an HTTP 503 error (Service unavailable) and maybe have the UI display a default until the service returns.</li>
+</ul>
+</li>
+<li><em>Circuit breaker pattern</em>: If a microservice starts to throw errors, instead of failing fast and still incurring a timeout delay, it may be better to just back off immediated from sending further requests until service quality resumes.
+<ul>
+<li>One popular library in Python is CircuitBreaker where you simply decorate the external call you want to protect with @circuit (ex. <code>@circuit(failure_threshold=20,expected_exception=RequestException,recovery_timeout=5</code>).</li>
+<li>The service can return a default or cached results while the circuit breaker is open.</li>
+<li>Ensure circuit breaker triggers are monitored and logged for future diagnosis.</li>
+</ul>
+</li>
+<li><em>Bulkhead pattern</em>: a damage limitation strategy.
+<ul>
+<li>If a part of a service is flooded with requests and sapping the system of resources, you may want to reserve a portion of resources to critical areas of the same service to maintain some level of functionality (ex. new order creations should still work whereas order tracking requests may not).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>References</strong></p>
+<ul>
+<li><em>Building Microservices</em>, 2nd Edition (O&rsquo;Reilly, 2021).</li>
+</ul>
+<h2 id="scalable-distributed-databases">Scalable Distributed Databases</h2>
+<h2 id="scalable-database-fundamentals">Scalable Database Fundamentals</h2>
+<p><strong>Scaling Relational Databases</strong></p>
+<ul>
+<li><em>Scaling Up</em>: Migrating to more powerful hardware.
+<ul>
+<li>Downsides: Cost, Availability, Growth</li>
+<li>If clients are global and low latency responses to each client is important, scaling up does not help with the issue.</li>
+</ul>
+</li>
+<li><em>Scaling Out</em>: Configure one or more nodes as replicas (secondaries) of the main database (primary). Writes are only possible to the primary but secondaries can be geographically distributed and reads are spread among the replicas.
+<ul>
+<li>Since there is a delay between the write on the primary and the replication to the secondaries, the application must be aware of the possibility of reading stale data.</li>
+</ul>
+</li>
+<li><strong>Partitioning Data</strong>
+<ul>
+<li><em>Horizontal partitioning</em>: Split data based on a value of a row or a hash function on the primary key. One example is splitting data based on customer region (<code>WHERE region=3</code>).</li>
+<li><em>Vertical partitioning</em> (row splitting): Splits data by the columns in a row. A common strategy is to partition a row between static, read-only data and dynamic data.</li>
+<li>A problem comes up with partitioned data where if a single request needs data from multiple nodes or join data from distributed partitioned tables potentially resulting in high levels of network traffic and required request coordination. There are strategies to mitigate this problem:
+<ul>
+<li>Define reference tables that are relatively small, rarely change, and need to be joined against frequently. These can be copied to each node so join operations cane execute locally and in parallel on each partitioned node with results to be merged by the request coordinator.</li>
+<li>Use partition keys or secondary indexes in joins to allow joins to execute locally.</li>
+<li>Ensure one side of the join has a highly selective filter that reduces the rows to a small collection. This can then be sent to each partitioned node and the join proceeds as in a reference table join minimizing data movement.</li>
+<li>Google&rsquo;s Cloud Spanner distributed relational database has multiple join algorithms and will choose algorithms automatically.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Shared Everything Databases</strong>: An example is Oracle&rsquo;s Real Applications Cluster (RAC) where you can have several replicated database engines coordinated through a clusterware layer, a shared cache among the clustered database nodes, all sharing the same data storage (database files, transaction logs, control files) over a Storage area network (SAN).</li>
+</ul>
+<p><strong>NoSQL</strong></p>
+<ul>
+<li>Simplified data models that can be easily evolved.</li>
+<li>Proprietary query languages with limited or no support for joins.</li>
+<li>Native support for horizontal scaling on low-cost, commodity hardware.</li>
+<li>Generally designed to natively scaled horizontally using a <em>shared nothing</em> architecture with no shared state.</li>
+<li>Without joins, the emphasis on changes from problem domain modeling to modeling the solution domain which requires you to think about the common data access patterns the application must support.</li>
+<li>For reading data, this means that the data model must <em>prejoin</em> the data you need for the request, otherwise known as a denormalized data model for relational databases.</li>
+<li>Another way to think of it is creating a table per use case.</li>
+<li>NoSQL databases are also usually termed as <em>schemaless</em> databases that don&rsquo;t have to define the format of objects up front but with the trade-off of the application having to discover the structure of the data it reads.</li>
+</ul>
+<p><strong>NoSQL Data Models</strong></p>
+<ul>
+<li><em>Key-value</em>: Basically a hash map (ex. Redis, Oracle NoSQL).</li>
+<li><em>Document</em>: Typically encoded in JSON usually organized into logical collections (ex. MongoDB, Couchbase).</li>
+<li><em>Wide column</em>: Organizes data associated with a key in named columns. Essentially a two-dimensional hash map, enabling columns within a row to be uniquely identified and sorted using a column name (ex. Apache Cassandra, Google Bigtable).</li>
+<li><em>Graph</em>: Used for storing and querying highly connected data and treats relationships between database objects as first-class citizens (ex. Neo4j, Amaazon Neptune).</li>
+</ul>
+<p><strong>Data Distribution</strong></p>
+<ul>
+<li>Partitioning data, or sharding, requires an algorithm to distribute data across multiple nodes.
+<ul>
+<li><em>Hash key</em>: The partition is chosen as a result of applying a hash function (modulus or consistent hashing) to the shard key and the hash is mapped to a partition.</li>
+<li><em>Value-based</em>: The partition is chosen based on the value of the shard key (ex. partitioning data based on customer country of residence).</li>
+<li><em>Range-based</em>: The shard key resides within a specific range (ex. using zip code ranges for each partition).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Replication</strong></p>
+<ul>
+<li><em>Leader-follower</em>: One replica is the leader and always holds the latest values. All writes go to the leader and is propagated to the rest of the replicas. The followers are read-only replicas.</li>
+<li><em>Leaderless</em>: Any replica can handle both reads and writes. When a replica receives a write, it becomes the request coordinator that update adn is responsible for ensuring the other replicas get correctly updated.</li>
+<li>Replica consistency is often a major issue in distributed systems when ensuring that updates are propagated to replicas accurately especially when varying latencies and network or hardware failures can occur.</li>
+<li><em>Strong consistency</em>: When a database ensures all replicas always have the same value and the client must wait until all replicas are modified before an update is considered successful.</li>
+<li><em>Eventual consistency</em>: A client may only wait for one replica to be updated and trust the database to update the rest. However, there is a window of time when the replicas are inconsistent.</li>
+</ul>
+<p><strong>CAP Theorem</strong></p>
+<ul>
+<li>If the network is operating correctly, a system can be both consistent and available.</li>
+<li>If a network partition occurs (the network drops or delays messages sent between nodes in a database), a system can either be consistent (CP) or available (AP).
+<ul>
+<li>The system may be consistent but not be available since an error is returned due all replicas not having the same values.</li>
+<li>The system may be available but not consistent since the application still functions but may see different data based on the node accessed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="eventual-consistency">Eventual Consistency</h2>
+<ul>
+<li><em>Read your own writes (RYOWs)</em>: a property of a system that ensures that if a client makes a change to the data, the updated value is guaranteed to be returned by any subsequent reads from the same client.</li>
+<li><em>Tunable consistency</em>: consistency can be configured in that you can set the request coordinator to wait until <em>W</em> out of <em>N</em> repicas are updated before returning success to the client. <em>R</em> is the number of replicas to read from before returning a value.</li>
+<li><em>Quorum reads and writes</em>: simply means that a majority of replicas will be queried whenever a read or write occurs. For example, with three replicas, a write must succeed at two replicas to be considered successful, and a read must access two replicas to determine the most up to date value.
+<ul>
+<li>A quorum fails if one does not exist but for database systems that favor availability over consistency, <em>sloppy quorums</em> are supported in which a failed quorum write can be temporarily stored at another database node until it can update the proper replicas. Implemented by DynamoDB, Cassandra, Riak, and Voldemort.</li>
+</ul>
+</li>
+</ul>
+<h2 id="strong-consistency">Strong Consistency</h2>
+<ul>
+<li>A class of distributed databases that provide strongly consistent systems, also known as NewSQL or distributed SQL, ensure all clients see the same, consistent value once it has been updated which eliminates many of the complexities inherent in eventually consistent systems.</li>
+</ul>
+<p><strong>ACID</strong></p>
+<ul>
+<li><em>Atomicity</em>: All changes to the database must be executed as if they are a single operation (<em>commit</em> or else <em>roll back</em>).</li>
+<li><em>Consistency</em>: Transactions will leave the database in a consistent state. For example, if an online purchase succeeds, the number of items in stock for that product is decreased by the number purchased.</li>
+<li><em>Isolation</em>: Transactions are isolated from each other by the database acquiring and releasing locks on the data objects being accessed before another transaction can access them.</li>
+<li><em>Durability</em>: If a transaction commits, the changes are permanent and stored on disk.</li>
+</ul>
+<p><strong>VoltDB</strong></p>
+<ul>
+<li>Built on a shared-nothing architecture where relational tables are sharded using a partition key and replicated across nodes.</li>
+<li>Low latencies are achieved by maintaining tables in memory and asynchronously writing snapshots of the data to disk. As a consequence, this limits the database size to the total memory available in the cluster of VoltDB nodes.</li>
+<li>Each table partition is associated with a single CPU core and all requests to this partition occurs in a strict single-threaded manner to alleviate contention concerns and the overheads of locking.</li>
+</ul>
+<p><strong>Google Cloud Spanner</strong></p>
+<ul>
+<li>Designed to be a strongly consistent, globally distributed SQL database, which Google refers as <em>external consistency</em>.</li>
+<li>From the programmer&rsquo;s point of view, Spanner behaves indistinguishably from a single machine database.</li>
+<li>Spanner partitions database tables into splits (shards) and one machine can host multiple splits. Splits are also replicated across multiple availability zones to provide fault tolerance and are kept consistent using the Paxos consensus algorithm.</li>
+<li>Data is dynamically re-partitioned across machines as data volumes grow or shrink and data is migrated to new locations to balance load.</li>
+<li>An API layer processes user requests as an optimized, fault tolerant lookup service to find the machines that host the key ranges a query accesses.</li>
+<li>Spanner implements the TrueTime service which equips Google data centers with satellite connected GPS and atomic clocks to provide closely synchronized times with a known upper bound clock skew (reported around 7 ms). All data objects in Spanner are associated with a TrueTime timestamp that represents the commit time of the transaction that last mutated the object to help ensure the order of updates.</li>
+<li>Open source implementations of Google Cloud Spanner include CockroachDB and YugabyteDB but has lower consistency guarantees due to not requiring custom TrueTime-style hardware.</li>
+</ul>
+<p><strong>Calvin Database System</strong></p>
+<ul>
+<li>A unique approach for a strongly consistent database where transactions are preprocessed and sequenced so that they are executed by replicas in the same order. This is known as deterministic transaction execution.</li>
+</ul>
+<h2 id="distributed-databse-implementations">Distributed Databse Implementations</h2>
+<p><strong>Redis</strong></p>
+<ul>
+<li>Main attraction is its ability to act as both a distributed cache and data store.</li>
+<li>Redis maintains an in-memory data store, known as a <em>data structure store</em> and is essentially a disk-backed cache with trailing persistence.</li>
+<li>To provide data safety, Redis can be configured to periodically dump the memory contents to disk or to log every command to an append-only file (AOF) and is persisted every second. Using both approaches provides the greated data safety guarantees.</li>
+<li>The core Redis structures are <em>Strings</em>, <em>Linked lists</em>, <em>Sets and sorted sets</em>, and <em>Hashes</em>.</li>
+<li>Redis is designed for low latency responses and high throughput as the primary data is stored in memory, making for fast data access.</li>
+<li>Redis trades off data safety for performance. It can be configured for improved data safety but at the expense of performance under heavy write loads. Redis probably shouldn&rsquo;t be used as a primary data store if data loss is not an option.</li>
+<li>Redis Cluster is the primary scalability mechanism for Redis and allows up to 1,000 nodes to host sharded databases distributed across 16,384 hash slots.</li>
+<li>Redis replication provides eventual consistency by default based on asynchronous replication.</li>
+</ul>
+<p><strong>MongoDB</strong></p>
+<ul>
+<li>The initial popularity of MongoDB was driven by its ease of programming and use.</li>
+<li>MongoDB documents are basically JSON objects with a set of extended types defined in the Binary JSON (BSON) specification.</li>
+<li>To scale horizontally, you can choose between hash-based and range-based sharding. You define a shard key for each document based on one or more field values then MongoDB choosed a database shard to store the document in based on either a hash function applied to the shard key or based on a shard key range within which the key resides.</li>
+</ul>
+<p><strong>Amazon DynamoDB</strong></p>
+<ul>
+<li>A fully managed database in that replicated database partitions are automatically managed and data is repartitioned to satisfy size and performance requirements.</li>
+<li>Individual data items comprise nested, key-value pairs, and are replicated three times for data safety.</li>
+<li>The point-in-time recovery feature automatically performs incremental backups and stores them for a rolling 35-day period.</li>
+<li>Full backups can be run at any time with minimal effect on production systems.</li>
+<li>You are charged both for storage and for every read and write made to the database.</li>
+<li>In general, the more you ask DynamoDB to do for you, the more you pay.</li>
+</ul>
+<p><strong>References</strong></p>
+<ul>
+<li><em>Principles of Distributed Database Systems</em>, 4th Edition (Springer, 2020) by M. Tamer Ozsu and Patrick Valduriez.</li>
+</ul>
+
+
+</div>
+    <div class="post__footer">
+      
+
+      
+    </div>
+
+    
+  </div>
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        David Ado
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZKQND180X"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FZKQND180X');
+        }
+      </script>
+    
+  
+
+</body>
+</html>

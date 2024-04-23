@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on David Ado</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on David Ado</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Feb 2024 10:59:49 -0800</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go Programming Notes</title>
+      <link>http://localhost:1313/posts/go-programming-notes/</link>
+      <pubDate>Sat, 17 Feb 2024 10:59:49 -0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/go-programming-notes/</guid>
+      
+        <description>This isn&amp;rsquo;t meant to be a comprehensive set of notes so I won&amp;rsquo;t be including much of the obvious stuff.</description>
+      
+    </item>
+    
+    <item>
+      <title>Scalable Systems Notes</title>
+      <link>http://localhost:1313/posts/scalable-systems-notes/</link>
+      <pubDate>Sat, 20 Jan 2024 12:37:25 -0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/scalable-systems-notes/</guid>
+      
+        <description>The Basics Scalability is the property of a system to handle a growing amount of work by adding resources. Replication and Optimization Replication adds more resources (web servers, app servers, database replicas, etc).</description>
+      
+    </item>
+    
+    <item>
+      <title>Mysql 8.0 Notes</title>
+      <link>http://localhost:1313/posts/mysql-8.0-notes/</link>
+      <pubDate>Sun, 14 Jan 2024 15:31:46 -0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql-8.0-notes/</guid>
+      
+        <description>CONFIGURATION innodb_buffer_pool_size
+Most important parameter for caching data and indexes in memory. Can set as high as dataset. Otherwise, 80% of available RAM is a good starting point.</description>
+      
+    </item>
+    
+    <item>
+      <title>Hugo Quickstart</title>
+      <link>http://localhost:1313/posts/hugo-quickstart/</link>
+      <pubDate>Sun, 03 Sep 2023 10:51:19 -0700</pubDate>
+      
+      <guid>http://localhost:1313/posts/hugo-quickstart/</guid>
+      
+        <description>I&amp;rsquo;ve been dabbling with static site generators and I&amp;rsquo;ve been impressed with Hugo as it&amp;rsquo;s fairly straightforward. It only took a few days for me to convert the majority of my static sites to use Hugo and deploy them on Cloudflare which really showcases its ease of use.</description>
+      
+    </item>
+    
+    <item>
+      <title>Kubernetes Reference on Gcp</title>
+      <link>http://localhost:1313/posts/kubernetes-reference-on-gcp/</link>
+      <pubDate>Sun, 03 Sep 2023 00:44:59 -0700</pubDate>
+      
+      <guid>http://localhost:1313/posts/kubernetes-reference-on-gcp/</guid>
+      
+        <description>This is just a quick reference sheet for me to get something up and running on Google Cloud quickly so I&amp;rsquo;m writing this as if no one else is reading it&amp;hellip;</description>
+      
+    </item>
+    
+    <item>
+      <title>Mysql 8.0 Backup and Replication Guide With Percona Xtrabackup 8.0</title>
+      <link>http://localhost:1313/posts/mysql-8.0-backup-and-replication-guide-with-percona-xtrabackup-8.0/</link>
+      <pubDate>Sun, 03 Sep 2023 00:23:19 -0700</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql-8.0-backup-and-replication-guide-with-percona-xtrabackup-8.0/</guid>
+      
+        <description>Percona&amp;rsquo;s Xtrabackup utility contains a few major changes in MySql 8.0 the most notable of which is the replacement of the innobackupex command with xtrabackup.</description>
+      
+    </item>
+    
+    <item>
+      <title>Mysql Replication Guide With Mysqldump</title>
+      <link>http://localhost:1313/posts/mysql-replication-guide-with-mysqldump/</link>
+      <pubDate>Sat, 02 Sep 2023 21:26:59 -0700</pubDate>
+      
+      <guid>http://localhost:1313/posts/mysql-replication-guide-with-mysqldump/</guid>
+      
+        <description>My step by step guide for setting up a replication server for MySql 5.6 and up (with GTID enabled) using mysqldump.</description>
+      
+    </item>
+    
+    <item>
+      <title>Typesense Reference</title>
+      <link>http://localhost:1313/posts/typesense-reference/</link>
+      <pubDate>Fri, 01 Sep 2023 10:28:45 -0700</pubDate>
+      
+      <guid>http://localhost:1313/posts/typesense-reference/</guid>
+      
+        <description>Whenever I need some sort of search engine, I often reach for Typesense over ElasticSearch due to its simplicity and ease of use as long as the dataset can fit into memory.</description>
+      
+    </item>
+    
+    <item>
+      <title>Git Reference</title>
+      <link>http://localhost:1313/posts/git-reference/</link>
+      <pubDate>Thu, 31 Aug 2023 09:33:38 -0700</pubDate>
+      
+      <guid>http://localhost:1313/posts/git-reference/</guid>
+      
+        <description>I&amp;rsquo;ve been using git for years now but there are commands I use every day while others, not so much.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

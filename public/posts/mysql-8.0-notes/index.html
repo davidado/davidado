@@ -1,0 +1,1062 @@
+<!doctype html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  
+    class="html theme--light"
+  
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <title>
+    David Ado
+        |
+        Mysql 8.0 Notes
+      
+
+    
+
+  </title>
+
+  <meta name="generator" content="Hugo 0.125.3"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="David Ado" />
+  <meta
+    name="description"
+    content="Full Stack Developer
+Cloud Architect
+"
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.009f917038f30ebd1f2147e8e1dfd40fc1b799422a7869aa0da12af1fd1bf8ba.css"
+      integrity="sha256-AJ&#43;RcDjzDr0fIUfo4d/UD8G3mUIqeGmqDaEq8f0b&#43;Lo="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css"
+    integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css"
+    integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css"
+    integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css"
+    integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css"
+    integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="canonical" href="http://localhost:1313/posts/mysql-8.0-notes/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.d6d329d93844b162e8bed1e915619625ca91687952177552b9b3e211014a2957.js"
+      integrity="sha256-1tMp2ThEsWLovtHpFWGWJcqRaHlSF3VSubPiEQFKKVc="
+      crossorigin="anonymous"
+    ></script>
+  
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Mysql 8.0 Notes">
+<meta name="twitter:description" content="CONFIGURATION innodb_buffer_pool_size
+Most important parameter for caching data and indexes in memory. Can set as high as dataset. Otherwise, 80% of available RAM is a good starting point.">
+
+
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/mysql-8.0-notes/">
+  <meta property="og:site_name" content="David Ado">
+  <meta property="og:title" content="Mysql 8.0 Notes">
+  <meta property="og:description" content="CONFIGURATION innodb_buffer_pool_size
+Most important parameter for caching data and indexes in memory. Can set as high as dataset. Otherwise, 80% of available RAM is a good starting point.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-01-14T15:31:46-08:00">
+    <meta property="article:modified_time" content="2024-01-14T15:31:46-08:00">
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "posts",
+        "name": "Mysql 8.0 Notes",
+        "headline": "Mysql 8.0 Notes",
+        "alternativeHeadline": "",
+        "description": "
+      
+        CONFIGURATION innodb_buffer_pool_size\nMost important parameter for caching data and indexes in memory. Can set as high as dataset. Otherwise, 80% of available RAM is a good starting point.
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/mysql-8.0-notes\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "copyrightYear" : "2024",
+        "dateCreated": "2024-01-14T15:31:46.00Z",
+        "datePublished": "2024-01-14T15:31:46.00Z",
+        "dateModified": "2024-01-14T15:31:46.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "David Ado",
+            "url": "http://localhost:1313/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http:\/\/localhost:1313\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+      ]
+
+    ,
+        "url" : "http:\/\/localhost:1313\/posts\/mysql-8.0-notes\/",
+        "wordCount" : "3405",
+        "genre" : [ ],
+        "keywords" : [ ]
+    }
+  </script>
+
+
+</head>
+<body class="body">
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+        
+      ><div
+  class="sidebar
+    animated fadeInDown
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/profile.jpg"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/">David Ado</a>
+        </div>
+      
+      <div class="sidebar__introduction-description">
+        <p>Full Stack Developer<br />Cloud Architect<br /></p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.linkedin.com/in/davidado/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Linkedin"
+            title="Linkedin"
+          >
+            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/jadoint"
+            target="_blank"
+            rel="noopener me"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        David Ado
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZKQND180X"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FZKQND180X');
+        }
+      </script>
+    
+  
+
+</div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/posts/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/about/about-me"
+              
+              title=""
+              >About</a
+            >
+          </li>
+        
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Mysql 8.0 Notes</h1>
+      <h2 id="configuration">CONFIGURATION</h2>
+<ul>
+<li>
+<p>innodb_buffer_pool_size</p>
+<ul>
+<li>Most important parameter for caching data and indexes in memory.</li>
+<li>Can set as high as dataset. Otherwise, 80% of available RAM is a good starting point.</li>
+</ul>
+</li>
+<li>
+<p>innodb_buffer_pool_instance</p>
+<ul>
+<li>Can divide buffer pool into separate regions to improve concurrency.</li>
+<li>If buffer pool is 64 GB and instances is set to 32, then the buffer is split into 32 regions of 2 GB each.</li>
+<li>If the buffer pool size is more than 16 GB, set the instances so that each region gets at least 1 GB of space.</li>
+</ul>
+</li>
+<li>
+<p>innodb_log_file_size</p>
+<ul>
+<li>Redo log used to replay committed transactions in case of a database crash.</li>
+<li>Set to 1 or 2 GB to start.</li>
+<li>Requires a restart but no longer need to delete log files in MySql 8.</li>
+</ul>
+</li>
+</ul>
+<h2 id="transactions">TRANSACTIONS</h2>
+<ul>
+<li>Atomicity: all statements in a transaction should succeed. Otherwise, they should all fail.</li>
+<li>Consistency: a transaction should affect data only in allowed ways. If you try to update an account that doesn&rsquo;t exist, the whole transaction should be rolled back.</li>
+<li>Isolation: No transaction should affect the existence of any other transaction. Suppose Bank A executes two transactions to transfer out funds, each transaction should check for funds available.</li>
+<li>Durability: data should persist on disk despite a system failure.</li>
+<li>Use START TRANSACTION; or BEGIN;</li>
+<li>Use SHOW WARNINGS; to check success.</li>
+<li>Use COMMIT; if statements are successful.</li>
+<li>Use ROLLBACK if not.</li>
+<li>&lsquo;autocommit&rsquo; is ON by default. If &lsquo;SET autocommit=0;&rsquo;, you need to explicitly issue a COMMIT for every statement.</li>
+<li>DDL statements cannot be rolled back.</li>
+</ul>
+<p><strong>Savepoints</strong></p>
+<ul>
+<li>BEGIN; <!-- raw HTML omitted -->; SAVEPOINT transfer_to_b;</li>
+<li>ROLLBACK TO transfer_to_b;</li>
+</ul>
+<h2 id="binary-logging">BINARY LOGGING</h2>
+<ul>
+<li>To enable &lsquo;binlog&rsquo;, set &rsquo;log_bin = /data/mysql/binlogs/server1&rsquo; and &lsquo;server_id = 100&rsquo; under [mysqld] in my.cnf then restart MySql. Check with SHOW VARIABLES LIKE &rsquo;log_bin%&rsquo;;</li>
+<li>The binary log contains all data and structure changes, not SELECT or SHOW statements that do not modify the data.</li>
+<li>The binary log is crash safe and only complete transactions are logged.</li>
+<li>Used in:
+<ul>
+<li>Replication: the changes are streamed to the replicas using the binary log.</li>
+<li>Point-in-time-recovery: suppose you take a backup at 00:00 and the database crashed at 8:00. You can install the backup and replay the binary logs to recover till 8:00.</li>
+</ul>
+</li>
+<li>The server creates a new binlog file when max_binlog_size is reached.</li>
+<li>SHOW BINARY LOGS; to display all binary logs.</li>
+<li>SHOW MASTER STATUS; to get the current binary log position.</li>
+<li>Use FLUSH LOGS; to close the current binary log and open a new one.</li>
+<li>Set &lsquo;binlog_expire_logs_seconds&rsquo; or &rsquo;expire_logs_days&rsquo; to clean logs to prevent filling up the disk. Set both to 0 to disable automatic expiry.</li>
+<li>You can also set dynamically using SET @@global.expire_logs_days=2.</li>
+<li>To delete all binary logs and start from the beginning, run RESET MASTER.</li>
+<li>Assuming you have a backup with an offset of 471, you can extract a log between offsets into a file:
+&lsquo;sudo mysqlbinlog /data/mysql/binlogs/server1.000001 &ndash;start-position=471 &ndash;stop-position=1793 &gt; binlog_extract&rsquo;</li>
+<li>Relocate binary logs using &lsquo;mysqlbinlogmove&rsquo;:
+<ol>
+<li>Stop MySql.</li>
+<li>sudo mysqlbinlogmove &ndash;bin-log-base name=server1 &ndash;binlog-dir=/data/mysql/binlogs /binlogs</li>
+<li>Edit my.cnf:
+[mysqld]
+log_bin=/binlogs</li>
+<li>Start MySql.</li>
+</ol>
+</li>
+<li>You can use the &ndash;server option to move all binary logs except the ones currently in use so you only have to move the last binary log when you stop MySql.
+<ul>
+<li>sudo mysqlbinlogmove &ndash;server=root:pass@host1:3306 /new/location</li>
+</ul>
+</li>
+</ul>
+<h2 id="backups">BACKUPS</h2>
+<ul>
+<li>Logical backups generate SQL statements (mysqldump, mysqlpump, mydumper).</li>
+<li>Physical backups contain all the files for the system (XtraBackup, flat file backup).</li>
+<li>For point-in-time recovery and consistent backups, the backup should be able to provide the binary log position up to when the backup was taken.</li>
+</ul>
+<p><strong>mysqldump</strong></p>
+<ul>
+<li>mysqldump &ndash;all-databases &ndash;routines &ndash;events &ndash;triggers &ndash;single-transaction &ndash;master-data &gt; dump.sql</li>
+<li>To get point-in-time recovery, specify &ndash;single-transaction (useful only for transactional tables like InnoDB to get a consistent state) and &ndash;master-data (prints the binary log coordinates of the server to the dump file).</li>
+<li>If taking the backup on a replica, use the &ndash;dump-slave option instead of &ndash;master-data to get the binary log coordinates of the master.</li>
+<li>To only dump the schema with no data, use the &ndash;no-data option.</li>
+</ul>
+<p><strong>mysqlpump</strong></p>
+<ul>
+<li>mysqlpump &ndash;default-parallelism=8 &gt; full_backup.sql</li>
+<li>To add more threads to a large table:
+mysqlpump -u root &ndash;password &ndash;parallel-schemas=4:big_table &ndash;default-parallelism=2 &gt; full_backup.sql</li>
+<li>Backup MySql users:
+mysqlpump &ndash;exclude-databases=% &ndash;users &gt; users_backup.sql</li>
+<li>To compress backups, you can use lz4 or zlib.
+<ul>
+<li>mysqlpump &ndash;compress-output=lz4 &gt; dump.lz4</li>
+</ul>
+</li>
+<li>To decompress:
+<ul>
+<li>lz4_decompress dump.lz4 dump.sql</li>
+</ul>
+</li>
+</ul>
+<p><strong>mydumper</strong></p>
+<ul>
+<li>Benefits are parallelism, consistency, easier to manage output (separate files for tables whereas mysqlpump writes everything to one file).</li>
+<li>shell &gt; mydumper -u root &ndash;password=<!-- raw HTML omitted --> -t 8 &ndash;trx-consistency-only &ndash;compress &ndash;outputdir /backups</li>
+<li>-t option specifies number of CPU threads to use.</li>
+<li>&ndash;trx-consistency-only is like &ndash;single-transaction in mysqldump but include a binlog position.</li>
+<li>Use the &ndash;kill-long-queries option to prevent the backup from failing from long running queries or use the &ndash;long-query-guard option to set a higher value.</li>
+</ul>
+<p><strong>XtraBackup</strong></p>
+<ul>
+<li>Copies flat files without shutting down the server and uses the redo log to avoid inconsistencies by performing a crash recovery.</li>
+</ul>
+<h2 id="restoring-data">RESTORING DATA</h2>
+<ul>
+<li>For mysqldump and mysqlpump backup files:
+<ul>
+<li>shell&gt; mysql -u <!-- raw HTML omitted --> -p -f &lt; /backups/full_backup.sql</li>
+<li>During the restore, backup statements are recorded in the binary log which slows down the restoration process. You can disable this just for that session using: mysql&gt; SET SQL_LOG_BIN=0; SOURCE full_backup.sql</li>
+<li>-f option forces the restoration to continue in the event of a failure.</li>
+</ul>
+</li>
+<li>For mydumper, myloader comes installed: shell&gt; myloader &ndash;directory=/backups &ndash;user=<!-- raw HTML omitted --> &ndash;password=<!-- raw HTML omitted --> &ndash;queries-per-transaction=5000 &ndash;threads=8 &ndash;compress-protocol &ndash;overwrite-tables</li>
+</ul>
+<p><strong>Point-in-time recovery</strong></p>
+<ul>
+<li>mysqldump or mysqlpump</li>
+<li>The binary log information is found in the CHANGE MASTER TO statement found in the resulting backup file from either mysqldump or mysqlpump.</li>
+<li>If &ndash;master-data was used for the backup, use the binary logs of the slave.
+<ul>
+<li>shell&gt; head -30 /backups/dump.sql
+CHANGE MASTER TO MASTER_LOG_FILE=&lsquo;server1.000008&rsquo;,MASTER_LOG_POS=154;</li>
+<li>shell&gt; mysqlbinlog &ndash;start-position=154 &ndash;disable-log-bin /backups/binlogs/server1.000008 | mysql -u<!-- raw HTML omitted --> -p -h <!-- raw HTML omitted --> -f</li>
+</ul>
+</li>
+<li>If &ndash;dump-slave was used for the backup, use the binary logs of the master.
+<ul>
+<li>CHANGE MASTER TO MASTER_LOG_FILE=&lsquo;centos7-bin.000001&rsquo;,MASTER_LOG_POS=463;</li>
+<li>shell&gt; mysqlbinlog &ndash;start-position=463 &ndash;disable-log-bin /backups/binlogs/centos7-bin.000001 | mysql -u<!-- raw HTML omitted --> -p -h <!-- raw HTML omitted --> -f</li>
+</ul>
+</li>
+</ul>
+<p><strong>mydumper</strong></p>
+<ul>
+<li>shell&gt; sudo cat /backups/metadata</li>
+<li>If the backup is from the replica, start the restore from the SHOW MASTER STATUS section.
+<ul>
+<li>shell&gt; mysqlbinlog &ndash;start-position=154 &ndash;disable-log-bin /backups/binlogs/server1.000012 | mysql -u<!-- raw HTML omitted --> -p -h <!-- raw HTML omitted --> -f</li>
+</ul>
+</li>
+<li>If the backup is from the master, start the restore from SHOW SLAVE STATUS.
+<ul>
+<li>shell&gt; mysqlbinlog &ndash;start-position=463 &ndash;disable-log-bin /backups/binlogs/centos7-bin.000001 | mysql -u<!-- raw HTML omitted --> -p -h <!-- raw HTML omitted --> -f</li>
+</ul>
+</li>
+</ul>
+<h2 id="replication">REPLICATION</h2>
+<ul>
+<li>Traditional replication: Single master, multiple slaves.</li>
+<li>Chain replication: One server replicates from another, which in turn replicates from another. The middle server is called the relay master. This is mainly used for replication between data centers.</li>
+<li>Master-master replication: Both masters accept writes and replicates between each other.</li>
+<li>Multi-source replication: A replica will replicate from multiple masters. Often used to consolidate from multiple shards into a single database and is useful for reporting.</li>
+</ul>
+<p><strong>Setting up master-master replication</strong></p>
+<ul>
+<li>Set master2 to replicate from master1.</li>
+<li>Make master2 read-only: mysql&gt; SET @@GLOBAL.READ_ONLY=ON;</li>
+<li>On master2, check the current binary log coordinate.
+mysql&gt; SHOW MASTER STATUS;
+File_Executed_Gtid_Set Position
+server1.000017 473</li>
+<li>Execute CHANGE MASTER TO command on master1 log_file_name is server1.000017 and position is 473:
+mysql&gt; CHANGE MASTER TO MASTER_HOST=&rsquo;&lt;master2_host&gt;&rsquo;, MASTER_USER=&lsquo;binlog_user&rsquo;, MASTER_PASSWORD=&rsquo;<!-- raw HTML omitted -->&rsquo;, MASTER_LOG_FILE=&rsquo;&lt;log_file_name&gt;&rsquo;, MASTER_LOG_POS=<!-- raw HTML omitted -->;</li>
+<li>Start the slave on master1: mysql&gt; START SLAVE;</li>
+<li>Set master2 back to read-write: mysql&gt; SET @@GLOBAL.READ_ONLY=OFF;</li>
+</ul>
+<p><strong>Setting up multi-source replication</strong></p>
+<ul>
+<li>Take a backup from server1 and server2 and restore on server3.</li>
+<li>On server3, change the replication repositories to TABLE from FILE.
+mysql&gt; STOP REPLICA;
+mysql&gt; SET GLOBAL master_info_repository = &lsquo;TABLE&rsquo;;
+mysql&gt; SET GLOBAL relay_log_info_repository = &lsquo;TABLE&rsquo;;</li>
+<li>Modify the configuration file:
+shell&gt; sudo vim /etc/my.cnf
+[mysqld]
+master-info-repository=TABLE
+relay-log-info-repository=TABLE</li>
+<li>On server3, execute the CHANGE MASTER TO command to make it a slave of server1 over a channel named master-1 (or any name you want).
+mysql&gt; CHANGE MASTER TO MASTER_HOST=&lsquo;server1&rsquo;, MASTER_USER=&rsquo;<!-- raw HTML omitted -->&rsquo;, MASTER_PORT=3306, MASTER_PASSWORD=&rsquo;<!-- raw HTML omitted -->&rsquo;, MASTER_LOG_FILE=&lsquo;server1.000017&rsquo;, MASTER_LOG_POS=788 FOR CHANNEL &lsquo;master-1&rsquo;;</li>
+<li>On server3, do the same for server2 over channel master-2.
+mysql&gt; CHANGE MASTER TO MASTER_HOST=&lsquo;server2&rsquo;, MASTER_USER=&rsquo;<!-- raw HTML omitted -->&rsquo;, MASTER_PORT=3306, MASTER_PASSWORD=&rsquo;<!-- raw HTML omitted -->&rsquo;, MASTER_LOG_FILE=&lsquo;server2.000014&rsquo;, MASTER_LOG_POS=75438 FOR CHANNEL &lsquo;master-2&rsquo;;</li>
+<li>Execute the START REPLICA FOR CHANNEL statement for each channel:
+mysql&gt; START REPLICA FOR CHANNEL &lsquo;master-1&rsquo;;
+mysql&gt; START REPLICA FOR CHANNEL &lsquo;master-2&rsquo;;</li>
+<li>SHOW REPLICA STATUS\G will show two rows for both replication channels. You can show the status for a single channel with SHOW REPLICA STATUS FOR CHANNEL &lsquo;master-1&rsquo;\G</li>
+<li>Other commands for the replica:
+mysql&gt; STOP REPLICA FOR CHANNEL &lsquo;master-1&rsquo;;
+mysql&gt; RESET REPLICA FOR CHANNEL &lsquo;master-2&rsquo;;</li>
+</ul>
+<p><strong>Setting up delayed replication</strong></p>
+<ul>
+<li>mysql&gt; STOP REPLICA;</li>
+<li>mysql&gt; CHANGE MASTER TO MASTER_DELAY = 3600;</li>
+<li>mysql&gt; START REPLICA;</li>
+</ul>
+<p><strong>Setting up semi-synchronous replication</strong></p>
+<ul>
+<li>The master waits until at least one replica has received the writes.</li>
+<li>By default, rpl_semi_sync_master_wait_point is set to AFTER_SYNC which means that it is enough that the write has reached the relay log. To ensure that the replica has committed the write, set rpl_semi_sync_master_wait_point to AFTER_COMMIT.</li>
+<li>To set the replica count to more than 1, set rpl_semi_sync_master_wait_for_slave_count.</li>
+<li>Fully synchronous replication waits until all replicas have committed the transaction though Galera Cluster must be used.</li>
+<li>On the master, install rpl_semi_sync_master plugin:
+mysql&gt; INSTALL PLUGIN rpl_semi_sync_master SONAME &lsquo;semisync_mster.so&rsquo;;</li>
+<li>Verify the installation:
+mysql&gt; SELECT PLUGIN_NAME, PLUGIN_STATUS FROM INFORMATION_SCHEMA.PLUGINS WHERE PLUGIN_NAME LIKE &lsquo;%semi%&rsquo;;</li>
+<li>On the master, enable semi-synchronous replication and adjust the timeout to 1 second.
+mysql&gt; SET @@GLOBAL.rpl_semi_sync_master_enabled=1;
+mysql&gt; SHOW VARIABLES LIKE &lsquo;rpl_semi_sync_master_enabled&rsquo;;
+mysql&gt; SET @@GLOBAL.rpl_semi_sync_master_timeout=1000;
+mysql&gt; SHOW VARIABLES LIKE &lsquo;rpl_semi_sync_master_timeout&rsquo;;</li>
+<li>On the replica, enable semi-synchronous replication and restart the slave IO thread.
+mysql&gt; SET GLOBAL rpl_semi_sync_slave_enabled = 1;
+mysql&gt; STOP SLAVE IO_THREAD;
+mysql&gt; START SLAVE IO_THREAD;</li>
+<li>To find the number of clients connected as semi-sync: on master, execute:
+mysql&gt; SHOW STATUS LIKE &lsquo;Rpl_semi_sync_master_clients&rsquo;;</li>
+<li>To check what type of replication the master is using (on means semi-sync, off means async):
+mysql&gt; SHOW STATUS LIKE &lsquo;Rpl_semi_sync_master_status&rsquo;;</li>
+</ul>
+<h2 id="table-maintenance">TABLE MAINTENANCE</h2>
+<ul>
+<li>Install Percona Toolkit.</li>
+<li>To alter tables, especially large ones, use pt-online-schema-change which will create an empty copy of the table, alter it, copy the rows, delete the old table, and renames the new one to the previous name.</li>
+<li>To determine if a DDL operation is performed in-place or uses a table copy, look at the &lsquo;rows affected&rsquo; value after the command finishes.
+<ul>
+<li>Changing the default value of a column is very fast and affects 0 rows.</li>
+<li>Adding a column is slower but since 0 rows are affected, it is done in-place.</li>
+<li>Adding an index takes time but 0 rows are affected so it is done in-place.</li>
+<li>Changing the data type of a column takes significant time and does require rebuilding all the rows of the table (except VARCHAR size).</li>
+</ul>
+</li>
+<li>shell&gt; pt-online-schema-change D=employees, t=employees, h=localhost -u root &ndash;ask-pass &ndash;alter=&ldquo;MODIFY COLUMN address VARCHAR(100)&rdquo; &ndash;alter-foreign-keys-method=auto &ndash;execute
+<ul>
+<li>&ndash;alter-foreign-keys-method updates foreign keys to refer to the new table after the schema change is complete.</li>
+</ul>
+</li>
+<li>If altering a table with triggers, specify the &ndash;preserve-triggers option
+<ul>
+<li>shell&gt; pt-online-schema-change D=employees, t=salaries, h=localhost -u user &ndash;ask-pass &ndash;alter=&ldquo;MODIFY COLUMN salary int&rdquo; &ndash;alter-foreign-keys-method=auto &ndash;execute &ndash;no-drop-old-table &ndash;preserve-triggers</li>
+</ul>
+</li>
+<li>If the server has replicas, the change can create significant lag. To avoid this, you can specify &ndash;check-slave-lag (enabled by default) and set &ndash;max-leg (1 second by default).
+<ul>
+<li>shell&gt; pt-online-schema-change D=employees, t=employees, h=localhost -u user &ndash;ask-pass &ndash;alter=&ldquo;MODIFY COLUMN address VARCHAR(100)&rdquo; &ndash;alter-foreign-keys-method=auto &ndash;execute &ndash;preserve-triggers &ndash;max-lag=10</li>
+</ul>
+</li>
+</ul>
+<p><strong>Archiving tables</strong></p>
+<ul>
+<li>shell&gt; pt-archiver &ndash;source h=localhost, D=employees, t=employees -u <!-- raw HTML omitted --> -p<!-- raw HTML omitted --> &ndash;where=&ldquo;hire_date&lt;DATE_ADD(NOW(), INTERVAL -30 YEAR)&rdquo; &ndash;no-check-charset &ndash;limit 10000 &ndash;commit-each</li>
+</ul>
+<p><strong>Archiving data</strong></p>
+<ul>
+<li>If you want to save the rows after deletion into a separate table or file, you can specify the &ndash;dest option.</li>
+<li>shell&gt; pt-archiver &ndash;source h=localhost, D=employees, t=employees &ndash;dest h=localhost, D=employees_archive -u <!-- raw HTML omitted --> -p<!-- raw HTML omitted --> &ndash;where=&ldquo;1=1&rdquo; &ndash;no-check-charset &ndash;limit 10000 &ndash;commit-each
+<ul>
+<li>&ndash;where=&ldquo;1=1&rdquo; copies all the rows.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Copying data</strong></p>
+<ul>
+<li>You can copy data from one table to another also using pt-archiver:
+<ul>
+<li>shell&gt; pt-archiver &ndash;source h=localhost, D=employees, t=employees &ndash;dest h=localhost, D=employees_archive -u <!-- raw HTML omitted --> -p<!-- raw HTML omitted --> &ndash;where=&ldquo;1=1&rdquo; &ndash;no-check-charset &ndash;limit 10000 &ndash;commit-each &ndash;no-delete</li>
+</ul>
+</li>
+</ul>
+<p><strong>Cloning tables</strong></p>
+<ul>
+<li>One option is to use the INSERT INTO SELECT statement (will not work with generated columns):
+mysql&gt; CREATE TABLE employees_clone LIKE employees;
+mysql&gt; INSERT INTO employees_clone SELECT * FROM employees;</li>
+<li>However, the INSERT INTO SELECT statement is slow and dangerous on big tables. If the statement fails, to restore the table state, InnoDB saves all the rows in UNDO logs, which can make the table inaccessible.</li>
+<li>You can also use pt-archiver with the &ndash;no-delete option to copy the desired rows to the destination table.</li>
+</ul>
+<h2 id="managing-logs">MANAGING LOGS</h2>
+<p><strong>Error log</strong></p>
+<ul>
+<li>Configuring the error log in my.cnf:
+<ul>
+<li>[mysqld]
+log-error=/var/log/mysql/mysqld.log</li>
+<li>shell&gt; sudo systemctl restart mysql</li>
+<li>mysql&gt; SHOW VARIABLES LIKE &rsquo;log_error&rsquo;;</li>
+</ul>
+</li>
+<li>To adjust the verbosity, set log_error_verbosity: 1 (errors only), 2 (errors and warnings), 3 (errors, warnings, notes). It is recommended to keep the default value of 3.
+<ul>
+<li>mysql&gt; SET @@GLOBAL.log_error_verbosity=2;</li>
+<li>mysql&gt; SELECT @@GLOBAL.log_error_verbosity;</li>
+</ul>
+</li>
+</ul>
+<p><strong>Rotating the error log</strong></p>
+<ul>
+<li>shell&gt; sudo mv /var/log/mysql/mysqld.log /var/log/mysql/mysqld.log.0</li>
+<li>shell&gt; mysqladmin -u root -p<!-- raw HTML omitted --> flush-logs</li>
+</ul>
+<p><strong>Using the system log for logging</strong></p>
+<ul>
+<li>mysql&gt; INSTALL COMPONENT &lsquo;file://component_log_sink_syseventlog&rsquo;;</li>
+<li>mysql&gt; SET PERSIST log_error_services = &rsquo;log_filter_internal;log_sink_syseventlog&rsquo;;</li>
+<li>mysql&gt; SHOW VARIABLES LIKE &rsquo;log_error_services&rsquo;;</li>
+<li>To check the logs: shell&gt; sudo grep mysqld /var/log/syslog | tail</li>
+<li>If you have multiple mysqld processes running, you can tag your instance with log_syslog_tag.
+<ul>
+<li>mysql&gt; SELECT @@GLOBAL.log_syslog_tag=&lsquo;instance1&rsquo;;</li>
+<li>shell&gt; sudo systemctl restart mysql</li>
+</ul>
+</li>
+<li>If you switch back to original logging, you can set log_error_services back to &rsquo;log_filter_internal;log_sink_internal&rsquo;.</li>
+</ul>
+<p><strong>Error logging in JSON format</strong></p>
+<ul>
+<li>mysql&gt; INSTALL COMPONENT &lsquo;file://component_log_sink_json&rsquo;;</li>
+<li>mysql&gt; SET PERSIST log_error_services = &rsquo;log_filter_internal;log_sink_json&rsquo;;</li>
+</ul>
+<p><strong>General query log</strong></p>
+<ul>
+<li>mysql&gt; SET @@GLOBAL.general_log_file=&rsquo;/var/log/mysql/general_query_log&rsquo;;</li>
+<li>mysql&gt; SET GLOBAL general_log = &lsquo;ON&rsquo;;</li>
+<li>Be very cautious enabling this on a production server since it drastically affects the server&rsquo;s performance.</li>
+</ul>
+<p><strong>Slow query log</strong></p>
+<ul>
+<li>Set long_query_time to 1 second (default is 10).
+<ul>
+<li>mysql&gt; SET @@GLOBAL.LONG_QUERY_TIME=1;</li>
+<li>Verify: mysql&gt; SELECT @@GLOBAL.LONG_QUERY_TIME;</li>
+</ul>
+</li>
+<li>mysql&gt; SET @@GLOBAL.slow_query_log_file=&rsquo;/var/log/mysql/mysql_slow.log&rsquo;;
+<ul>
+<li>Verify: SELECT @@GLOBAL.slow_query_log_file;</li>
+</ul>
+</li>
+<li>Enable the slow query log:
+<ul>
+<li>mysql&gt; SET @@GLOBAL.slow_query_log=1;</li>
+<li>Verify: SELECT @@GLOBAL.slow_query_log;</li>
+</ul>
+</li>
+<li>Verify with a slow query: mysql&gt; SELECT SLEEP(2);
+<ul>
+<li>shell&gt; sudo less /var/log/mysql/mysql_slow.log</li>
+</ul>
+</li>
+</ul>
+<p><strong>Managing binary logs</strong></p>
+<ul>
+<li>Using the PURGE BINARY LOGS command and the expire_logs_days variable is unsafe in a replication environment because any one of the slaves may not have fully consumed the binary logs and go out of sync. The safe way to delete the binary logs is to check which binary logs have been read by each replica then delete them. Use mysqlbinlogpurge for this.</li>
+<li>shell&gt; mysqlbinlogpurge &ndash;master=dbadmin:<!-- raw HTML omitted -->@master:3306 &ndash;slaves=dbadmin:<!-- raw HTML omitted -->@slave1:3306,dbadmin:<!-- raw HTML omitted -->@slave2:3306</li>
+</ul>
+<p># Latest binlog file replicated by all slaves: master-bin.000022</p>
+<p># Purging binary logs prior to &lsquo;master-bin.000023&rsquo;</p>
+<ul>
+<li>To discover all replicas automatically, set report_host and report_port on all replicas and restart MySql on each server.
+<ul>
+<li>shell&gt; sudo vim /etc/my.cnf
+[mysqld]
+report-host = replica1
+report-port = 3306</li>
+<li>shell&gt; sudo systemctl restart mysql</li>
+<li>mysql&gt; SHOW VARIABLES LIKE &lsquo;%report%&rsquo;;</li>
+<li>Execute mysqlbinlogpurge with the discover-slaves-login option.</li>
+<li>mysql&gt; SHOW BINARY LOGS;</li>
+<li>shell&gt; mysqlbinlogpurge &ndash;master=dbadmin:<!-- raw HTML omitted -->@master &ndash;discover-slaves-login=dbadmin:<!-- raw HTML omitted --></li>
+</ul>
+</li>
+</ul>
+<h2 id="performance-tuning">PERFORMANCE TUNING</h2>
+<ul>
+<li>The EXPLAIN keyword gives information now how the optimizer is going to execute the query.</li>
+<li>EXPLAIN FORMAT=JSON gives more detailed information.</li>
+</ul>
+<p><strong>Benchmarking queries</strong></p>
+<ul>
+<li>Since queries are often executed in milliseconds, you can use mysqlslap to run a query multiple times for a longer execution time.</li>
+<li>Do not run this on production and ensure that concurrency is less than max_connections.</li>
+<li>shell&gt; mysqlslap -u <!-- raw HTML omitted --> -p<!-- raw HTML omitted --> &ndash;create-schema=employees &ndash;query=&ldquo;SELECT e.emp_no, salary FROM salaries s JOIN employees e ON s.emp_no=e.emp_no WHERE (first_name=&lsquo;Adam&rsquo;);&rdquo; -c 1000 i 100
+<ul>
+<li>This query was executed with 1,000 concurrencies and 100 iterations and on average, took 3.216 seconds.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Adding an index</strong></p>
+<ul>
+<li>mysql&gt; ALTER TABLE employees ADD INDEX name (first_name, last_name);</li>
+<li>Unique indexes: mysql&gt; ALTER TABLE employees ADD UNIQUE INDEX unique_name (last_name, first_name);</li>
+<li>Prefix index: indexes that use only the leading part of column values rather than the full column can be created. The length must be specified.
+<ul>
+<li>mysql&gt; ALTER TABLE employees ADD INDEX (last_name(10));</li>
+</ul>
+</li>
+</ul>
+<p><strong>Drop an index</strong></p>
+<ul>
+<li>mysql&gt; ALTER TABLE employees DROP INDEX last_name;</li>
+</ul>
+<p><strong>Index on generated columns</strong></p>
+<ul>
+<li>mysql&gt; ALTER TABLE employees ADD hire_date_year YEAR AS (YEAR(hire_date)) VIRTUAL, ADD INDEX (hire_date_year);</li>
+<li>Now you can use hire_date_year with the index since you can&rsquo;t use hire_date when it&rsquo;s in the YEAR() function.</li>
+</ul>
+<p><strong>Invisible index</strong></p>
+<ul>
+<li>To test the performance impact of dropping an index, you can make it invisible first.
+<ul>
+<li>mysql&gt; ALTER TABLE employees ALTER INDEX last_name INVISIBLE;</li>
+<li>mysql&gt; ALTER TABLE employees ALTER INDEX last_name VISIBLE;</li>
+</ul>
+</li>
+</ul>
+<p><strong>Descending index</strong></p>
+<ul>
+<li>mysql&gt; ALTER TABLE employees ADD INDEX name_desc(first_name ASC, last_name DESC);</li>
+</ul>
+<p><strong>Analyzing slow queries using pt-query-digest</strong></p>
+<ul>
+<li>pt-query-digest can be used on the slow query log, general query log, process list, binary log, and TCP dump.</li>
+<li>The slow query log does not log all queries unless long_query_time is 0, the general query log does not include query time, the process list does not state the full query, only writes are analyzed in the binary log, while using the TCP dump causes server degradation.</li>
+</ul>
+<p><strong>Slow log</strong></p>
+<ul>
+<li>shell&gt; sudo pt-query-digest /var/lib/mysq/mysql_slow.log &gt; slow_query_digest</li>
+<li>The digest report contains queries ranked by the number of query executions multiplied by the query time. You can drill down to the specific query by searching for the query checksum.</li>
+</ul>
+<p><strong>General query log</strong></p>
+<ul>
+<li>shell&gt; sudo pt-query-digest –type genlog /var/lib/mysql/mysql_general.log &gt; general_query_digest</li>
+</ul>
+<p><strong>Process list</strong></p>
+<ul>
+<li>shell&gt; pt-query-digest &ndash;processlist h=localhost &ndash;iterations 10 &ndash;run-time 1m -u <!-- raw HTML omitted --> -p<!-- raw HTML omitted -->
+<ul>
+<li>run-time specifies how long each iteration should run. The tool generates reports every minute for 10 minutes for the above command.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Binary log</strong></p>
+<ul>
+<li>Convert the binary log to text format using the mysqlbinlog utility first:
+<ul>
+<li>shell&gt; sudo mysqlbinlog /var/lib/mysql/binlog.000639 &gt; binlog.00063</li>
+<li>shell&gt; pt-query-digest &ndash;type binlog binlog.000639 &gt; binlog_digest</li>
+</ul>
+</li>
+</ul>
+<p><strong>TCP dump</strong></p>
+<ul>
+<li>shell&gt; sudo tcpdump -s 65535 -x -nn -q -tttt -i any -c 1000 port 3306 &gt; mysql.tcp.txt</li>
+<li>shell&gt; pt-query-digest &ndash;type tcpdump mysql.tcp.txt &gt; tcpdump_digest</li>
+</ul>
+<p><strong>Removing duplicate and redundant indexes</strong></p>
+<ul>
+<li>pt-duplicate-key-checker - part of Percona Toolkit.
+<ul>
+<li>shell&gt; pt-duplicate-key-checker -u <!-- raw HTML omitted --> -p<!-- raw HTML omitted --> &ndash;database employees</li>
+</ul>
+</li>
+<li>mysqlindexcheck - part of MySql utilities. Note that it ignores descending indexes and may treat them as duplicate keys of ascending indexes of the same columns.
+<ul>
+<li>shell&gt; mysqlindexcheck &ndash;server=<!-- raw HTML omitted -->:<!-- raw HTML omitted -->@localhost:3306 employees &ndash;show-drops</li>
+</ul>
+</li>
+<li>Using the sys schema.</li>
+<li>Not all redundant indexes are bad. Make sure you check the EXPLAIN plan.</li>
+</ul>
+<p><strong>Removing unused indexes</strong></p>
+<ul>
+<li>pt-index-usage takes queries from the slow query log, runs the explain plan for each query, and identifies unused indexes. This is an approximation since the slow query log does not contain all queries.</li>
+<li>shell&gt; sudo pt-index-usage slow -u <!-- raw HTML omitted --> -p<!-- raw HTML omitted --> /var/lib/mysql/mysql_slow.log &gt; unused_indexes</li>
+</ul>
+<h2 id="security">SECURITY</h2>
+<ul>
+<li>As soon as an installation is done, run: mysql&gt; mysql_secure_installation</li>
+<li>Be cautious granting a user FILE privileges since a user can write a file anywhere in the filesystem with privileges of the mysqld daemon.</li>
+<li>The MySql port should only be open to the application server.
+<ul>
+<li>shell&gt; telnet <!-- raw HTML omitted --> 3306</li>
+<li>If telnet hangs, the port is closed.</li>
+<li>If it states that your host is not allowed to connect, then the port is open but MySql is restricting access.</li>
+</ul>
+</li>
+<li>When creating users, avoid giving access from anywhere (the % option). Restrict access to an IP range or subdomain.</li>
+<li>Restrict the user to only the database that is needed.
+<ul>
+<li>mysql&gt; GRANT SELECT ON employee.* TO ‘employee_read_only’@’10.10.%.%’;</li>
+</ul>
+</li>
+<li>When writing scripts, it’s often difficult to include passwords for a script. You can store credentials in $HOME/.my.cnf:
+shell&gt; cat $HOME/.my.cnf
+[client]
+user=dbadmin
+password=$troNgP@$$w0rd
+<ul>
+<li>However, the password is in cleartext and presents a security issue.</li>
+</ul>
+</li>
+<li>mysql_config_editor can be used to store the password in encrypted format instead.
+<ul>
+<li>Create the .mylogin.cnf file using mysql_config_editor:
+shell&gt; mysql_config_editor set &ndash;login-path=dbadmin_local &ndash;host=localhost &ndash;user=dbadmin &ndash;password</li>
+</ul>
+</li>
+<li>You can add multiple hostnames and passwords by changing the login path:
+<ul>
+<li>shell&gt; mysql_config_editor set &ndash;login-path=dbadmin_remote &ndash;host=56.363.642.17 &ndash;user=dbadmin &ndash;password</li>
+</ul>
+</li>
+<li>To log in as dbadmin_remote:
+<ul>
+<li>shell&gt; mysql &ndash;login-path=dbadmin_remote</li>
+</ul>
+</li>
+<li>To connect to localhost, just execute mysql or mysql &ndash;login-path=dbadmin_local.</li>
+<li>To print all the login paths: shell&gt; mysql_config_editor print &ndash;all</li>
+</ul>
+<p><strong>Reset the root password</strong></p>
+<ul>
+<li>First method is to specify the new root password in an init-file:
+<ul>
+<li>shell&gt; sudo systemctl stop mysql</li>
+<li>shell&gt; pgrep mysqld</li>
+</ul>
+</li>
+<li>Save the SQL codein /var/lib/mysql/mysql-init-password. Make this file readable to MySql only.
+<ul>
+<li>shell&gt; vim /var/lib/mysql/mysql-init-password
+ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘New$trongPass4’;</li>
+<li>shell&gt; sudo chmod 400 /var/lib/mysql/mysql-init-password</li>
+<li>shell&gt; sudo chown mysql:mysql /var/lib/mysql/mysql-init-password</li>
+</ul>
+</li>
+<li>Start the MySql server with the &ndash;init-file option:
+<ul>
+<li>shell&gt; sudo -u mysql /usr/sbin/mysqld &ndash;daemonize &ndash;pid-file=/var/run/mysqld/mysqld.pid &ndash;user=mysql &ndash;init-file=/var/lib/mysql/mysql-init-password</li>
+</ul>
+</li>
+<li>Verify the error log file: “Execution of init_file ‘var/lib/mysql/mysql-init-password’ ended.</li>
+<li>Verify login: shell&gt; mysql -u root -p’New$trongPass4’</li>
+<li>Remove the file: shell&gt; sudo rm -rf /var/lib/mysql/mysql-init-password</li>
+</ul>
+<p><strong>Setting up encrypted connections using X509</strong></p>
+<ul>
+<li>If the client and server are in different data centers, it is recommended to use encrypted connections since anyone with access to the network can inspect the data.</li>
+<li>mysql&gt; SHOW STATUS LIKE ‘Ssl_cipher’;
+<ul>
+<li>If you are not using SSL, Ssl_cipher will be blank.</li>
+</ul>
+</li>
+<li>The server needs the ca.pem, server-cert.pem, and server-key.pem files.</li>
+<li>The clients use the client-cert.pem and client-key.pem files to connect to the server.</li>
+<li>The .pem files are located in /var/lib/mysql by default.</li>
+<li>shell&gt; sudo vim /etc/my.cnf
+[mysqld]
+ssl-ca=/var/lib/mysql/ca.pem
+ssl-cert=/var/lib/mysql/server-cert.pem
+ssl-key=/var/lib/mysql/server-key.pem</li>
+<li>shell&gt; sudo systemctl restart mysql</li>
+<li>mysql&gt; SHOW VARIABLES LIKE ‘%ssl%’;</li>
+<li>Copy the client certs to the client location.</li>
+<li>Connect to the server by passing the ssl options:
+<ul>
+<li>shell&gt; mysql &ndash;ssl-cert=client-cert.pem &ndash;ssl-key=client-key.pem -h 64.234.136.178</li>
+</ul>
+</li>
+<li>Mandate the user to connect only by X509:
+<ul>
+<li>mysql&gt; ALTER USER ‘dbadmin’@’%’ REQUIRE X509;</li>
+</ul>
+</li>
+<li>shell&gt; mysql &ndash;login-path=dbadmin_remote -h 35.186.158.188 &ndash;ssl-cert=client-cert.pem &ndash;ssl-key=client-key.pem</li>
+</ul>
+<p><strong>Setting up SSL replication</strong></p>
+<ul>
+<li>Transfer client-key.pem and client-cert.pem to the replicas then chmod them.
+<ul>
+<li>shell&gt; sudo chmod 600 /etc/mysql/client-key.pem</li>
+<li>shell&gt; sudo chmod 644 /etc/mysql/client-cert.pem</li>
+</ul>
+</li>
+<li>On the replica, execute the CHANGE_MASTER command with the SSL options.
+<ul>
+<li>mysql&gt; STOP SLAVE;</li>
+<li>mysql&gt; CHANGE MASTER TO MASTER_SSL=1, MASTER_SSL_CERT=’/etc/mysql/client-cert.pem’, MASTER_SSL_KEY=’/etc/mysql/client-key.pem’;</li>
+</ul>
+</li>
+<li>mysql&gt; SHOW REPLICA STATUS\G
+Master_SSL_Allowed: Yes
+Master_SSL_CA_File: /etc/mysql/ca.pem
+Master_SSL_Cert: /etc/mysql/client-cert.pem
+Master_SSL_Key: /etc/mysql/client-key.pem</li>
+<li>mysql&gt; ALTER USER ‘repl’@’%’ REQUIRE X509;</li>
+</ul>
+
+
+</div>
+    <div class="post__footer">
+      
+
+      
+    </div>
+
+    
+  </div>
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        David Ado
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZKQND180X"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FZKQND180X');
+        }
+      </script>
+    
+  
+
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!doctype html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  
+    class="html theme--light"
+  
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <title>
+    David Ado
+        |
+        Kubernetes Reference on Gcp
+      
+
+    
+
+  </title>
+
+  <meta name="generator" content="Hugo 0.125.3"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="David Ado" />
+  <meta
+    name="description"
+    content="Full Stack Developer
+Cloud Architect
+"
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.009f917038f30ebd1f2147e8e1dfd40fc1b799422a7869aa0da12af1fd1bf8ba.css"
+      integrity="sha256-AJ&#43;RcDjzDr0fIUfo4d/UD8G3mUIqeGmqDaEq8f0b&#43;Lo="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css"
+    integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css"
+    integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css"
+    integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css"
+    integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css"
+    integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="canonical" href="http://localhost:1313/posts/kubernetes-reference-on-gcp/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.d6d329d93844b162e8bed1e915619625ca91687952177552b9b3e211014a2957.js"
+      integrity="sha256-1tMp2ThEsWLovtHpFWGWJcqRaHlSF3VSubPiEQFKKVc="
+      crossorigin="anonymous"
+    ></script>
+  
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Kubernetes Reference on Gcp">
+<meta name="twitter:description" content="This is just a quick reference sheet for me to get something up and running on Google Cloud quickly so I&rsquo;m writing this as if no one else is reading it&hellip;">
+
+
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/kubernetes-reference-on-gcp/">
+  <meta property="og:site_name" content="David Ado">
+  <meta property="og:title" content="Kubernetes Reference on Gcp">
+  <meta property="og:description" content="This is just a quick reference sheet for me to get something up and running on Google Cloud quickly so I&amp;rsquo;m writing this as if no one else is reading it&amp;hellip;">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-09-03T00:44:59-07:00">
+    <meta property="article:modified_time" content="2023-09-03T00:44:59-07:00">
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "posts",
+        "name": "Kubernetes Reference on Gcp",
+        "headline": "Kubernetes Reference on Gcp",
+        "alternativeHeadline": "",
+        "description": "
+      
+        This is just a quick reference sheet for me to get something up and running on Google Cloud quickly so I\u0026rsquo;m writing this as if no one else is reading it\u0026hellip;
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/kubernetes-reference-on-gcp\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "David Ado"
+        },
+        "copyrightYear" : "2023",
+        "dateCreated": "2023-09-03T00:44:59.00Z",
+        "datePublished": "2023-09-03T00:44:59.00Z",
+        "dateModified": "2023-09-03T00:44:59.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "David Ado",
+            "url": "http://localhost:1313/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http:\/\/localhost:1313\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+      ]
+
+    ,
+        "url" : "http:\/\/localhost:1313\/posts\/kubernetes-reference-on-gcp\/",
+        "wordCount" : "593",
+        "genre" : [ ],
+        "keywords" : [ ]
+    }
+  </script>
+
+
+</head>
+<body class="body">
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+        
+      ><div
+  class="sidebar
+    animated fadeInDown
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/profile.jpg"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/">David Ado</a>
+        </div>
+      
+      <div class="sidebar__introduction-description">
+        <p>Full Stack Developer<br />Cloud Architect<br /></p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.linkedin.com/in/davidado/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Linkedin"
+            title="Linkedin"
+          >
+            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/jadoint"
+            target="_blank"
+            rel="noopener me"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        David Ado
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZKQND180X"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FZKQND180X');
+        }
+      </script>
+    
+  
+
+</div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/posts/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/about/about-me"
+              
+              title=""
+              >About</a
+            >
+          </li>
+        
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Kubernetes Reference on Gcp</h1>
+      <p>This is just a quick reference sheet for me to get something up and running on Google Cloud quickly so I&rsquo;m writing this as if no one else is reading it&hellip;</p>
+<h2 id="list-all-pods">List all pods</h2>
+<p><code>kubectl get pods</code></p>
+<h2 id="get-a-shell-to-a-pod">Get a shell to a pod</h2>
+<p><code>kubectl exec -it &lt;name of pod&gt; -- bash</code></p>
+<p>Starts you off with 2 nodes (e2-medium by default) in a multi-zonal configuration located in <em>us-central1</em> with auto-scaling enabled with a minimum of 1 node and a maximum of 4. See: <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler">https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler</a></p>
+<p><code>gcloud container clusters create example-cluster --zone us-central1-a --node-locations us-central1-a,us-central1-b,us-central1-f --num-nodes 2 --enable-autoscaling --min-nodes 1 --max-nodes 4</code></p>
+<p>Scale each deployment based on the cpu requests (spec.resources.requests.cpu) set for each pod.</p>
+<p>See: <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps">https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps</a></p>
+<p>See: <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></p>
+<p><code>kubectl autoscale deployment my-app --min 1 --max 10 --cpu-percent 50</code></p>
+<p>If you have an existing docker-compose file and are just getting started with using kubernetes yaml files, try using kompose to convert your docker-compose file into a kubernetes format. See: <a href="https://kompose.io/">https://kompose.io/</a></p>
+<p><em>Linux curl -L</em></p>
+<p><code>https://github.com/kubernetes/kompose/releases/download/v1.22.0/kompose-linux-amd64 -o kompose</code></p>
+<p><em>macOS curl -L</em></p>
+<p><code>https://github.com/kubernetes/kompose/releases/download/v1.22.0/kompose-darwin-amd64 -o kompose</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chmod +x kompose
+</span></span><span class="line"><span class="cl">sudo mv ./kompose /usr/local/bin/kompose
+</span></span><span class="line"><span class="cl">kompose convert -f docker-compose.yml
+</span></span></code></pre></div><p>Use <code>kubectl apply -f .</code> to launch the kubernetes deployments for the resulting yaml files from the step above. See: <a href="https://kubernetes.io/docs/tasks/access-application-cluster/connecting-frontend-backend/">https://kubernetes.io/docs/tasks/access-application-cluster/connecting-frontend-backend/</a></p>
+<p>Run <code>kubectl get services</code> to get the external IP of your LoadBalancer service (Nginx for me) and use that for your domain&rsquo;s DNS. See: <a href="https://cloud.google.com/kubernetes-engine/docs/quickstarts/deploying-a-language-specific-app">https://cloud.google.com/kubernetes-engine/docs/quickstarts/deploying-a-language-specific-app</a></p>
+<p>I use Google Cloud Build to auto-build my images whenever I push to a specific branch on my GitHub repo and use <code>$SHORT_SHA</code> as the tag for the image name. To update my kubernetes cluster, I would just change the image tag in the Kubernetes deployment yaml file then run <code>kubectl apply -f [name of deployment]-deployment.yaml</code> again to re-deploy the pods.</p>
+<h2 id="secrets">Secrets</h2>
+<p>Use Kubernetes secrets to store sensitive credentials and expose them as environment variables.</p>
+<p>See: <a href="https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/">https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-config-file/</a></p>
+<p>See: <a href="https://kubernetes.io/docs/concepts/configuration/secret/">https://kubernetes.io/docs/concepts/configuration/secret/</a></p>
+<p>Store secrets from files: <a href="https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/">https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/</a></p>
+<p>Using secrets and volume mounts for Google application credentials: <a href="https://cloud.google.com/kubernetes-engine/docs/tutorials/authenticating-to-cloud-platform">https://cloud.google.com/kubernetes-engine/docs/tutorials/authenticating-to-cloud-platform</a></p>
+<p><em>db-creds-secret.yaml</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kind: Secret
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   name: db-creds
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">stringData:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   username: dbusername
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   password: dbpassword
+</span></span></code></pre></div><p>Run <code>kubectl apply -f db-creds-secret.yaml</code> to store credentials in Kubernetes. To assign secret values to pod environment variables, update the pod deployment file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apiVersion: apps/v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kind: Deployment
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   name: blog
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   selector:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   matchLabels:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      app: blog
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      tier: backend
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      track: stable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   replicas: 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   template:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      metadata:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         labels:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            app: blog
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            tier: backend
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            track: stable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      spec:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         containers:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            - name: blog
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              image: gcr.io/[project-id]/github.com/jadoint/blog:blog
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">             ports:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">               - name: https
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                 containerPort: 9000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            env:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">               - name: DB_USER
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                 valueFrom:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    secretKeyRef:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                       name: db-creds
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                      key: username
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            - name: DB_PASSWORD
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              valueFrom:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                 secretKeyRef:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    name: db-creds
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    key: password
+</span></span></code></pre></div><h2 id="cronjobs">Cronjobs</h2>
+<p>See: <a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/">https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/</a></p>
+<p>See: <a href="https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/">https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/</a></p>
+<p>Use <code>.spec.failedJobsHistoryLimit</code> and <code>.spec.successfulJobsHistoryLimit</code> to clear out old failed or successful pods after running the job. Use <code>.spec.concurrencyPolicy</code> to let cronjob know whether or not to run a new job if the previous job is still running. Run <code>kubectl create -f cronjob.yaml</code> to create the cronjob.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apiVersion: batch/v1beta1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kind: CronJob
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> name: hello
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> schedule: &#34;*/1 * * * *&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">concurrencyPolicy: Forbid
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">failedJobsHistoryLimit: 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">successfulJobsHistoryLimit: 3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> jobTemplate:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   spec:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     template:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       spec:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         containers:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         - name: hello
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">           image: busybox
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">           imagePullPolicy: IfNotPresent
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">           command:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">           - /bin/sh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">           - -c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">           - date; echo Hello from the Kubernetes cluster
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         restartPolicy: OnFailure
+</span></span></code></pre></div><h2 id="even-pod-distribution">Even Pod Distribution</h2>
+<p>See: <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/">https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/</a></p>
+<p>See: <a href="https://stackoverflow.com/questions/59434797/how-to-deploy-pods-across-all-nodes-evenly-in-kubernetes">https://stackoverflow.com/questions/59434797/how-to-deploy-pods-across-all-nodes-evenly-in-kubernetes</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apiVersion: apps/v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kind: Deployment
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> name: nginx
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> selector:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   matchLabels:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     app: nginx
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     tier: frontend
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     track: stable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> replicas: 4
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> template:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   metadata:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     labels:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       app: nginx
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       tier: frontend
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       track: stable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  spec:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    topologySpreadConstraints:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      - maxSkew: 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        topologyKey: node
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        whenUnsatisfiable: ScheduleAnyway
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        labelSelector:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          matchLabels:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          app: nginx
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    affinity:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      podAntiAffinity:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        preferredDuringSchedulingIgnoredDuringExecution:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          - weight: 100
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            podAffinityTerm:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              labelSelector:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                matchExpressions:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                  - key: app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                   operator: In
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                   values:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                     - nginx
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">              topologyKey: kubernetes.io/hostname
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Volume and container config...#
+</span></span></code></pre></div><h2 id="get-pod-requests-and-limits">Get Pod Requests and Limits</h2>
+<p><code>kubectl top pod &lt;podname&gt;</code></p>
+
+
+</div>
+    <div class="post__footer">
+      
+
+      
+    </div>
+
+    
+  </div>
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        David Ado
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZKQND180X"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FZKQND180X');
+        }
+      </script>
+    
+  
+
+</body>
+</html>
