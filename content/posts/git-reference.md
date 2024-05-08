@@ -32,3 +32,28 @@ git commit -am "Removed node_modules directory"
 ## Committing a modified file in a submodule
 
 `cd` inside the submodule directory then add and commit to git from there. You can then go to your project directory and add and commit to git as normal.
+
+## Pushing a repo to a different GitHub account
+
+Configure the name and email for the particular repository:
+```
+git config user.name "<github username>"
+git config user.email "<github email>"
+```
+
+Modify your ssh config at `~/.ssh/config`:
+```
+Host github.com-acct1
+    User git
+    HostName github.com
+    IdentityFile ~/.ssh/github_private_key1
+    IdentitiesOnly yes
+
+Host github.com-acct2
+    User git
+    HostName github.com
+    IdentityFile ~/.ssh/github_private_key2
+    IdentitiesOnly yes
+```
+
+`git push` should now be authenticated for the new account.
