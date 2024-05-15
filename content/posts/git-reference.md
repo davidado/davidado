@@ -68,3 +68,5 @@ Host github.com-acct2
 
 If pushing still prompts you for a username and password, ensure that the remote url is set to the ssh location instead of the https URL. To reset the URL:
 `git remote set-url origin git@github.com:/<your-github-username>/<repository-name>.git`
+
+To troubleshoot the ssh connection: `ssh -vT git@github.com`
