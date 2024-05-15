@@ -6,7 +6,7 @@ draft = false
 
 I've been using `git` for years now but there are commands I use every day while others, not so much.
 
-## New Repository
+## New repository
 
 Create a new repository on GitHub at [https://repo.new/](https://repo.new/). Then locally, run:
 
@@ -16,7 +16,15 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin https://github.com/<your-gh-username>/<repository-name>
+git remote add origin git@github.com:/<your-github-username>/<repository-name>.git
+git push -u origin main
+```
+
+## Push a new repository
+
+```
+git remote add origin git@github.com:/<your-github-username>/<repository-name>.git
+git branch -M main
 git push -u origin main
 ```
 
@@ -57,3 +65,6 @@ Host github.com-acct2
 ```
 
 `git push` should now be authenticated for the new account.
+
+If pushing still prompts you for a username and password, ensure that the remote url is set to the ssh location instead of the https URL. To reset the URL:
+`git remote set-url origin git@github.com:/<your-github-username>/<repository-name>.git`
