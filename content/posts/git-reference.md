@@ -70,3 +70,13 @@ If pushing still prompts you for a username and password, ensure that the remote
 `git remote set-url origin git@github.com:/<your-github-username>/<repository-name>.git`
 
 To troubleshoot the ssh connection: `ssh -vT git@github.com`
+
+## Pull without incurring a merge commit
+
+`git pull --rebase`
+
+## Put all uncommitted changes in temporary storage.
+
+`git stash`
+
+To retrieve the last stored change: `git stash pop`
