@@ -80,3 +80,4 @@ To troubleshoot the ssh connection: `ssh -vT git@github.com`
 `git stash`
 
 To retrieve the last stored change: `git stash pop`
+To remove the last stashed change: `git stash drop`
