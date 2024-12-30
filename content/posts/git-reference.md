@@ -43,10 +43,18 @@ git commit -am "Removed node_modules directory"
 
 ## Pushing a repo to a different GitHub account
 
-Configure the name and email for the particular repository:
+List all git config settings: `git config --list`
+
+Set local repository name and email config:
 ```
-git config user.name "<github username>"
-git config user.email "<github email>"
+git config --local user.name "<github username>"
+git config --local user.email "<github email>"
+```
+
+Set global repository name and email config:
+```
+git config --global user.name "<github username>"
+git config --global user.email "<github email>"
 ```
 
 Modify your ssh config at `~/.ssh/config`:
