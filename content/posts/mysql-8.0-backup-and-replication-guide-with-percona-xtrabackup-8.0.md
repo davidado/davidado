@@ -1,22 +1,22 @@
 +++
-title = 'Mysql 8.0 Backup and Replication Guide With Percona Xtrabackup 8.0'
+title = 'Mysql 8+ Backup and Replication Guide With Percona Xtrabackup 8.0'
 date = 2023-09-03T00:23:19-07:00
 draft = false
 +++
 
-Percona's Xtrabackup utility contains a few major changes in MySql 8.0 the most notable of which is the replacement of the innobackupex command with xtrabackup. Below is my no-explanation (reference the flags in Percona's docs) step-by-step guide for setting up replication for MySql updated for version 8.0.
+Percona's Xtrabackup utility contains a few major changes in MySql 8.0 the most notable of which is the replacement of the innobackupex command with xtrabackup. Below is my no-explanation (reference the flags in Percona's docs) step-by-step guide for setting up replication for MySql updated for version 8+.
 
-1. Create replication user in MySql, if one does not exist.
+1. Create replication user in MySql, if one does not exist. *WITH caching_sha2_password* is optional.
 
-`mysql> CREATE USER 'replicauser'@'192.168.%' IDENTIFIED BY 'replicauserpassword';`
+`mysql> CREATE USER 'replicauser'@'192.168.%' IDENTIFIED WITH caching_sha2_password BY 'replicauserpassword';`
 
-2. Create backup user in MySql, if one does not exist.
+2. Create backup user in MySql, if one does not exist. *WITH caching_sha2_password* is optional.
 
-`mysql> CREATE USER 'backupuser'@'localhost' IDENTIFIED BY 'backupuserpass';`
+`mysql> CREATE USER 'backupuser'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'backupuserpass';`
 
 3. Configure the leader MySql server to accept connections from the replicas, if not already done.
 
-`mysql> GRANT REPLICATION SLAVE, REPLICATION CLIENT, SUPER ON *.* TO 'replicauser'@'192.168.%';`
+`mysql> GRANT REPLICATION SLAVE ON *.* TO 'replicauser'@'192.168.%';`
 
 4. Grant backup privileges to your backup user.
 
@@ -106,57 +106,56 @@ then continue on with setting `gtid_purged`.
 
 **Change leader with SSL enabled (ensure SSL certs are updated)**
 
-`replica> CHANGE MASTER TO MASTER_HOST='host', MASTER_PORT=3306, MASTER_USER='replicauser', MASTER_PASSWORD='replicauserpassword', MASTER_AUTO_POSITION=1, MASTER_SSL=1, MASTER_SSL_CA='/var/lib/mysql/ca.pem', MASTER_SSL_CAPATH='/var/lib/mysql', MASTER_SSL_CERT='/var/lib/mysql/client-cert.pem', MASTER_SSL_KEY='/var/lib/mysql/client-key.pem';`
+`replica> CHANGE REPLICATION SOURCE TO SOURCE_HOST='host', SOURCE_PORT=3306, SOURCE_USER='replicauser', SOURCE_PASSWORD='replicauserpassword', SOURCE_AUTO_POSITION=1, SOURCE_SSL=1, SOURCE_SSL_CA='/var/lib/mysql/ca.pem', SOURCE_SSL_CAPATH='/var/lib/mysql', SOURCE_SSL_CERT='/var/lib/mysql/client-cert.pem', SOURCE_SSL_KEY='/var/lib/mysql/client-key.pem';`
 
 **Change leader without SSL**
 
-`replica> CHANGE MASTER TO MASTER_HOST='host', MASTER_PORT=3306, MASTER_USER='replicauser', MASTER_PASSWORD='replicauserpassword', MASTER_AUTO_POSITION=1;`
+`replica> CHANGE REPLICATION SOURCE TO SOURCE_HOST='host', SOURCE_PORT=3306, SOURCE_USER='replicauser', SOURCE_PASSWORD='replicauserpassword', SOURCE_AUTO_POSITION=1;`
 
-**Change leader without using MASTER_AUTO_POSITION**
+**Change leader without using SOURCE_AUTO_POSITION**
 
 When the XtraBackup process was run, there should have been a file called `xtrabackup_slave_info` generated in the top level of that directory if the `--slave-info` flag was used. Take note of the values found in that file to use in the statement below.
 
-`$ replica> CHANGE MASTER TO MASTER_HOST='192.168.0.70', MASTER_USER='replicauser', MASTER_PASSWORD='replicauserpassword', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=24938;`
+`$ replica> CHANGE REPLICATION SOURCE TO SOURCE_HOST='192.168.0.70', SOURCE_USER='replicauser', SOURCE_PASSWORD='replicauserpassword', SOURCE_LOG_FILE='mysql-bin.000001', SOURCE_LOG_POS=24938;`
 
 15. Start replica.
 
-`replica> START SLAVE;`
-
+`replica> START REPLICA;`
 
 16. Confirm that the replica is replicating data properly.
 
-`$ replica> SHOW SLAVE STATUS \G`
+`$ replica> SHOW REPLICA STATUS \G`
 
 Then confirm that these values are enabled in the status.
 ```
-Slave_IO_Running: Yes
-Slave_SQL_Running: Yes
-Seconds_Behind_Master: 0
+Replica_IO_Running: Yes
+Replica_SQL_Running: Yes
+Seconds_Behind_Source: 0
 ```
 
-`Seconds_Behind_Master` is likely to be greater than 0 when first starting your replica but this should decrease over time. If your replica is lagging and is unable to catch up to leader, try setting `innodb_flush_method = O_DIRECT` and `innodb_flush_log_at_trx_commit = 2` in your replica's MySql configuration but keep `innodb_flush_log_at_trx_commit = 1` in your leader to increase ACID compliance.
+`Seconds_Behind_Source` is likely to be greater than 0 when first starting your replica but this should decrease over time. If your replica is lagging and is unable to catch up to leader, try setting `innodb_flush_method = O_DIRECT` and `innodb_flush_log_at_trx_commit = 2` in your replica's MySql configuration but keep `innodb_flush_log_at_trx_commit = 1` in your leader to increase ACID compliance.
 
 ## Promoting a replica to leader
 
 Execute these on the replica to be made into the leader.
 ```
-mysql> STOP SLAVE;
-mysql> RESET SLAVE ALL;
+mysql> STOP REPLICA;
+mysql> RESET REPLICA ALL;
 ```
 
 To reset `gtid_executed` and prevent multiple `gtid_executed` values, run:
 
-`mysql> RESET MASTER;`
+`mysql> RESET REPLICA;`
 
-Run `CHANGE MASTER` command in the other replicas to point to the new leader.
+Run `CHANGE REPLICATION SOURCE` command in the other replicas to point to the new leader.
 
 To prevent replication issues:
 
-1. Set `skip-slave-start = 1` in *my.cnf* to ensure that the replication process doesn't start prematurely when the replicas are restarted.
+1. Set `skip_replica_start = ON` in *my.cnf* to ensure that the replication process doesn't start prematurely when the replicas are restarted.
 2. Close application access to the old leader database to prevent further writes.
-3. Ensure that all replicas have caught up to the leader by confirming `Seconds_Behind_Master: 0` and that `Retrieved_Gtid_Set` and `Executed_Gtid_Set` are the same across all replicas.
-4. Run `CHANGE MASTER` command in the other replicas to point to the new leader.
-5. Restart replication of all replicas to the new leader (`START SLAVE`) prior to bringing the old leader down and putting the application back up.
+3. Ensure that all replicas have caught up to the leader by confirming `Seconds_Behind_Source: 0` and that `Retrieved_Gtid_Set` and `Executed_Gtid_Set` are the same across all replicas.
+4. Run `CHANGE REPLICATION SOURCE` command in the other replicas to point to the new leader.
+5. Restart replication of all replicas to the new leader (`START REPLICA`) prior to bringing the old leader down and putting the application back up.
 
 ---
 
